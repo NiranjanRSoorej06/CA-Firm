@@ -1,3 +1,106 @@
+.founders {
+  background: #fff;
+  padding: 56px 0 56px 0;
+  text-align: center;
+}
+.founders-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #233c74;
+  margin-bottom: 0.3em;
+  letter-spacing: 0.01em;
+}
+.founders-underline {
+  width: 140px;
+  height: 4px;
+  background: linear-gradient(90deg, #fff 0%, #ffc300 40%, #ffc300 60%, #fff 100%);
+  margin: 0 auto 2.2em auto;
+  border-radius: 2px;
+}
+.founders-desc {
+  max-width: 800px;
+  margin: 0 auto 2.5em auto;
+  font-size: 1.13rem;
+  color: #233c74;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.founders-btn {
+  background: #ffc300;
+  color: #233c74;
+  border: none;
+  padding: 0.8em 2.5em;
+  border-radius: 2em;
+  font-weight: 700;
+  font-size: 1.13rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(10,23,78,0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 2.5em;
+}
+.founders-btn:hover {
+  background: #ffb000;
+  color: #233c74;
+}
+.founders-list {
+  display: flex;
+  justify-content: center;
+  gap: 2.5em;
+  margin-top: 0;
+  flex-wrap: wrap;
+}
+.founder-card {
+  background: #fff;
+  border-radius: 1.3em;
+  box-shadow: 0 16px 40px 0 rgba(10,23,78,0.13);
+  padding: 0 0 0.5em 0;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5em;
+  transition: box-shadow 0.2s;
+}
+.founder-card:hover {
+  box-shadow: 0 24px 48px 0 rgba(10,23,78,0.18);
+}
+.founder-img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 1.1em 1.1em 0 0;
+  background: #eaeaea;
+  margin-bottom: 0;
+}
+.founder-info {
+  background: #fff;
+  border-radius: 0 0 1em 1em;
+  width: 100%;
+  margin-top: 0;
+  box-shadow: 0 8px 32px 0 rgba(10,23,78,0.10);
+  padding: 1.1em 0.5em 0.9em 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.founder-name {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.2em;
+  text-align: center;
+}
+.founder-role {
+  font-size: 1.08em;
+  color: #888;
+  font-weight: 500;
+  text-align: center;
+}
 /* Fixed Navbar */
 .fixed-navbar {
   position: fixed;

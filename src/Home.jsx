@@ -71,29 +71,34 @@ export function App() {
 
         {/* Founders */}
         <section class="founders">
-          <h2>Meet our founders</h2>
-          <p>The Core Team represents our deep-rooted values and wide spectrum of capabilities. We make a consistent and concerted effort to engage the magnitude of our business minds and thought processes in our consultations.</p>
-          <button class="secondary-btn">Explore More</button>
+          <h2 class="founders-title">Meet our founders</h2>
+          <div class="founders-underline"></div>
+          <p class="founders-desc">
+            The Core Team represents our deep-rooted values and wide spectrum of capabilities. We make a consistent and conscious effort to gauge the magnitude of future business hurdles and develop appropriate solutions. Our resolute will, flexible approach and clinical precision has the power to resolve the toughest of financial problems of your business.
+          </p>
+          <button class="founders-btn">
+            Explore More <span class="about-btn-icon">&#8594;</span>
+          </button>
           <div class="founders-list">
             <div class="founder-card">
-              <div class="founder-img placeholder-img" />
+              <img class="founder-img" src="/founder1.jpg" alt="Anand Krishna" />
               <div class="founder-info">
-                <h4>Anand Krishna</h4>
-                <p>Founder</p>
+                <div class="founder-name">Anand Krishna</div>
+                <div class="founder-role">Co-Founder</div>
               </div>
             </div>
             <div class="founder-card">
-              <div class="founder-img placeholder-img" />
+              <img class="founder-img" src="/founder2.jpg" alt="Rahul Singh" />
               <div class="founder-info">
-                <h4>Rahul Singh</h4>
-                <p>Co-Founder</p>
+                <div class="founder-name">Rahul Singh</div>
+                <div class="founder-role">Founder</div>
               </div>
             </div>
             <div class="founder-card">
-              <div class="founder-img placeholder-img" />
+              <img class="founder-img" src="/founder3.jpg" alt="Ajeet Agarwal" />
               <div class="founder-info">
-                <h4>Ajeet Agarwal</h4>
-                <p>Partner</p>
+                <div class="founder-name">Ajeet Agarwal</div>
+                <div class="founder-role">Executive Manager</div>
               </div>
             </div>
           </div>
