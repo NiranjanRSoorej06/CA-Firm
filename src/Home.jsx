@@ -7,15 +7,20 @@ export function App() {
       <nav class="fixed-navbar">
         <div class="navbar-content">
           <div class="navbar-logos">
-            <img src="/ca-logo.png" alt="CA India" class="navbar-logo" />
-            <img src="/sbcpl-logo.png" alt="SBCPL" class="navbar-logo" />
-            <span class="navbar-brand">SBCPL</span>
+            <img src="/ca-logo.png" alt="CA India" class="navbar-logo ca-logo" />
+            <div class="sbcpl-logo-group">
+              <img src="/sbcpl-logo.png" alt="SBCPL" class="navbar-logo sbcpl-logo" />
+              <div class="sbcpl-texts">
+                <span class="sbcpl-main">SBCPL</span>
+                <span class="sbcpl-sub">SBC</span>
+              </div>
+            </div>
           </div>
           <ul class="navbar-links">
             <li>Home</li>
             <li>About</li>
             <li class="navbar-dropdown">
-              Services <span class="navbar-caret">▼</span>
+              Services <span class="navbar-caret">&#9660;</span>
             </li>
             <li>Contact</li>
           </ul>
@@ -36,11 +41,14 @@ export function App() {
 
         {/* About Us */}
         <section class="about-us">
-          <h2>About Us</h2>
-          <p>
-            SEGPL is a professionally managed consulting house headquartered in Kochi, Kerala, India, with a strong presence since January 2013. We provide an integrated package of services in the areas of audit, assurance, taxation, and compliance.
+          <h2 class="about-title">About Us</h2>
+          <div class="about-underline"></div>
+          <p class="about-desc">
+            SBCPL is a professionally managed consulting house headquartered in Kochi, Kerala, India, with a strong presence in the industry since 2013. We provide an integrated spectrum of services spanning taxation, corporate compliance, statutory registrations, business structuring, project advisory, and financial consulting. Our firm is essentially a one-stop solution for businesses seeking support in navigating financial regulations and corporate governance, allowing clients to address all aspects of their business needs through a single trusted partner<br />capitaire.com
           </p>
-          <button class="secondary-btn">Explore More</button>
+          <button class="about-btn">
+            Explore More <span class="about-btn-icon">&#8594;</span>
+          </button>
         </section>
 
         {/* Mission & Vision */}
