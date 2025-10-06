@@ -81,25 +81,25 @@ export function App() {
           </button>
           <div class="founders-list">
             <div class="founder-card">
-              <img class="founder-img" src="/founder1.jpg" alt="Anand Krishna" />
-              <div class="founder-info">
-                <div class="founder-name">Anand Krishna</div>
-                <div class="founder-role">Co-Founder</div>
+              <div class="founder-img-card">
+                <img class="founder-img" src="/src/assets/Mask group.svg" alt="Anand Krishna" />
               </div>
+              <div class="founder-label-name">Anand Krishna</div>
+              <div class="founder-label-role">Co-Founder</div>
             </div>
             <div class="founder-card">
-              <img class="founder-img" src="/founder2.jpg" alt="Rahul Singh" />
-              <div class="founder-info">
-                <div class="founder-name">Rahul Singh</div>
-                <div class="founder-role">Founder</div>
+              <div class="founder-img-card">
+                <img class="founder-img" src="/src/assets/Mask group.svg" alt="Rahul Singh" />
               </div>
+              <div class="founder-label-name">Rahul Singh</div>
+              <div class="founder-label-role">Founder</div>
             </div>
             <div class="founder-card">
-              <img class="founder-img" src="/founder3.jpg" alt="Ajeet Agarwal" />
-              <div class="founder-info">
-                <div class="founder-name">Ajeet Agarwal</div>
-                <div class="founder-role">Executive Manager</div>
+              <div class="founder-img-card">
+                <img class="founder-img" src="/src/assets/Mask group.svg" alt="Ajeet Agarwal" />
               </div>
+              <div class="founder-label-name">Ajeet Agarwal</div>
+              <div class="founder-label-role">Executive Manager</div>
             </div>
           </div>
         </section>
