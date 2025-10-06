@@ -646,7 +646,7 @@ body {
 
 /* Services */
 .services {
-  background: linear-gradient(180deg, #233c74 80%, #f7f8fa 100%);
+  background: #233c74;
   color: #fff;
   padding: 56px 0 56px 0;
   text-align: center;
