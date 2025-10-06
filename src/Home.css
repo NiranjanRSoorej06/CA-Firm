@@ -461,11 +461,31 @@ body {
 .hero {
   background: linear-gradient(180deg, #0a174e 60%, #f7f8fa 100%);
   color: #fff;
-  min-height: 350px;
+  min-height: 700px;
+  padding-bottom: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: url('/src/assets/Group 72.svg') no-repeat center bottom;
+  background-size: 100% auto;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-overlay {
+  position: relative;
+  z-index: 1;
 }
 .hero-overlay {
   width: 100%;
