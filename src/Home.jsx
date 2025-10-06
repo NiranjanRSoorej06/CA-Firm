@@ -170,18 +170,42 @@ export function App() {
         </section>
 
         {/* Contact */}
-        <section class="contact">
-          <h2>Get In Touch</h2>
-          <div class="contact-content">
-            <form class="contact-form">
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <textarea placeholder="Message" />
-              <button class="primary-btn" type="submit">Submit</button>
-            </form>
-            <div class="contact-map placeholder-map" />
+        <section class="contact-section">
+          <div class="contact-bg">
+            <div class="contact-header">
+              <h2 class="contact-title">Get In Touch</h2>
+              <div class="contact-subtitle">We're here to help you. We'd love to hear from you</div>
+            </div>
+            <div class="contact-main">
+              <form class="contact-form-v2">
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <textarea placeholder="Message" />
+                <button class="contact-submit-btn" type="submit">Submit</button>
+              </form>
+              <div class="contact-map-v2">
+                <iframe
+                  title="SBCPL Map"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=76.2673%2C9.9312%2C76.2973%2C9.9512&amp;layer=mapnik"
+                  style={{ border: 0, width: '100%', height: '100%', borderRadius: '18px' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+            <div class="contact-socials">
+              <span class="contact-social-icon">G</span>
+              <span class="contact-social-icon">in</span>
+              <span class="contact-social-icon">F</span>
+              <span class="contact-social-icon">X</span>
+            </div>
           </div>
-          <button class="secondary-btn">Book a Free Consultation</button>
+          <div class="contact-lower">
+            <div class="contact-lower-content">
+              <span>Want to partner with SBCPL? Contact us for a consultation.</span>
+              <button class="contact-cta-btn">Book a Free Consultation</button>
+            </div>
+          </div>
         </section>
 
         {/* Footer */}
