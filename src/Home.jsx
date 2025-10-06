@@ -106,17 +106,47 @@ export function App() {
 
         {/* Services */}
         <section class="services">
-          <h2>Our Services</h2>
+          <h2 class="services-title">Our Services</h2>
+          <div class="services-desc">
+            The Core Team represents our deep-rooted values and wide spectrum of capabilities. We make a consistent and conscious effort to gauge the magnitude of future business hurdles and develop appropriate solutions. Our resolute will, flexible approach and clinical precision has the power to resolve the toughest of financial problems of your business.
+          </div>
           <div class="services-list">
-            <div class="service-card">Income Tax</div>
-            <div class="service-card">GST</div>
-            <div class="service-card">TDS</div>
-            <div class="service-card">Partnership Firm Compliance</div>
-            <div class="service-card">Company Law & ROC Compliance</div>
-            <div class="service-card">Statutory Registrations</div>
-            <div class="service-card">Loan & Finance Facilitation</div>
-            <div class="service-card">Project reports & Investment Proposals</div>
-            <div class="service-card">LLP Compliance Services</div>
+            <div class="service-card">
+              <div class="service-icon">📄</div>
+              <div class="service-label">Income Tax</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">🧾</div>
+              <div class="service-label">GST</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">🛡️</div>
+              <div class="service-label">TDS</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">🏢</div>
+              <div class="service-label">Partnership Firm Compliance</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">🏛️</div>
+              <div class="service-label">Company Law & ROC Compliance</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">📝</div>
+              <div class="service-label">Statutory Registrations</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">💰</div>
+              <div class="service-label">Loan & Finance Facilitation</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">📊</div>
+              <div class="service-label">Project reports & Investment Proposals</div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">⚖️</div>
+              <div class="service-label">LLP Compliance Services</div>
+            </div>
           </div>
         </section>
 
