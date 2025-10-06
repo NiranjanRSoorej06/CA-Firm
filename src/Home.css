@@ -591,6 +591,11 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 .mission-vision::before {
   content: '';
@@ -603,7 +608,6 @@ body {
   background-size: cover;
   filter: grayscale(1);
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
   opacity: 1;
   pointer-events: none;
   z-index: 0;
