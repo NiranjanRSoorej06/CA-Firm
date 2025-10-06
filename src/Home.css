@@ -40,10 +40,10 @@
   margin-bottom: 2.2em;
 }
 .contact-form-v2 {
-  background: #fff;
+  background: #2e4a8a;
   border-radius: 18px;
-  border: 5px solid #233c74;
-  box-shadow: 0 8px 32px 0 rgba(10,23,78,0.13);
+  border: 2.5px solid #1a2c5b;
+  box-shadow: 0 8px 32px 0 rgba(10,23,78,0.18);
   padding: 2.2em 1.7em 1.5em 1.7em;
   display: flex;
   flex-direction: column;
@@ -51,24 +51,37 @@
   min-width: 320px;
   max-width: 340px;
   align-items: stretch;
+  color: #fff;
 }
 .contact-form-v2 input,
 .contact-form-v2 textarea {
-  border: none;
+  border: 1.5px solid #c7d3f7;
   border-radius: 8px;
-  background: #f7f8fa;
+  background: #fff;
+  color: #233c74;
   padding: 1em 1.1em;
   font-size: 1.08em;
   margin-bottom: 0.2em;
   outline: none;
   resize: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.contact-form-v2 input:focus,
+.contact-form-v2 textarea:focus {
+  border: 1.5px solid #ffc300;
+  box-shadow: 0 0 0 2px #ffc30033;
+}
+.contact-form-v2 input::placeholder,
+.contact-form-v2 textarea::placeholder {
+  color: #8faeea;
+  opacity: 1;
 }
 .contact-form-v2 textarea {
   min-height: 90px;
   max-height: 180px;
 }
 .contact-submit-btn {
-  background: #ffc300;
+  background: linear-gradient(90deg, #ffc300 60%, #ffe066 100%);
   color: #233c74;
   border: none;
   border-radius: 8px;
@@ -77,12 +90,14 @@
   padding: 0.9em 0;
   margin-top: 0.7em;
   cursor: pointer;
-  box-shadow: 0 2px 8px 0 rgba(10,23,78,0.08);
-  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(10,23,78,0.13);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.03em;
 }
 .contact-submit-btn:hover {
-  background: #ffb000;
-  color: #fff;
+  background: #ffc300;
+  color: #1a2c5b;
+  box-shadow: 0 4px 16px 0 rgba(10,23,78,0.18);
 }
 .contact-map-v2 {
   width: 320px;
