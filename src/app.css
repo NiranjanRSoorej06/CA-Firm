@@ -1,3 +1,96 @@
+/* Fixed Navbar */
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(10,23,78,0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2.5em;
+  margin: 12px auto 0 auto;
+  max-width: 900px;
+  height: 70px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+}
+.navbar-logos {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  background: #f7f8fa;
+  border-radius: 0.7em;
+  object-fit: contain;
+}
+.navbar-brand {
+  font-weight: 700;
+  color: #009688;
+  font-size: 1.2em;
+  margin-left: 0.2em;
+}
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar-links li {
+  font-size: 1.15em;
+  color: #222;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navbar-links li:hover {
+  color: #0a174e;
+}
+.navbar-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.navbar-caret {
+  font-size: 1em;
+  margin-left: 0.2em;
+}
+.navbar-cta {
+  background: #233c74;
+  color: #fff;
+  border: none;
+  padding: 0.7em 2em;
+  border-radius: 2em;
+  font-weight: 600;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.navbar-cta:hover {
+  background: #0a174e;
+}
+
+/* Add top padding to homepage to prevent content from being hidden under fixed navbar */
+.homepage {
+  padding-top: 90px;
+}
 /* Fixed Search Bar */
 .fixed-searchbar {
   position: fixed;

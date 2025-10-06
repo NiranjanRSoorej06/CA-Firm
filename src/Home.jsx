@@ -3,13 +3,25 @@ import './app.css';
 export function App() {
   return (
     <>
-      {/* Fixed Search Bar */}
-      <div class="fixed-searchbar">
-        <div class="searchbar-content">
-          <input class="search-input" type="text" placeholder="Search..." />
-          <button class="search-btn" type="button">Search</button>
+      {/* Fixed Navbar */}
+      <nav class="fixed-navbar">
+        <div class="navbar-content">
+          <div class="navbar-logos">
+            <img src="/ca-logo.png" alt="CA India" class="navbar-logo" />
+            <img src="/sbcpl-logo.png" alt="SBCPL" class="navbar-logo" />
+            <span class="navbar-brand">SBCPL</span>
+          </div>
+          <ul class="navbar-links">
+            <li>Home</li>
+            <li>About</li>
+            <li class="navbar-dropdown">
+              Services <span class="navbar-caret">▼</span>
+            </li>
+            <li>Contact</li>
+          </ul>
+          <button class="navbar-cta">Get Started</button>
         </div>
-      </div>
+      </nav>
       <div class="homepage">
         {/* Hero Section */}
         <section class="hero">
