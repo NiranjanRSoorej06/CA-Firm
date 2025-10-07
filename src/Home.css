@@ -780,39 +780,56 @@ body {
 
 /* FAQ */
 .faq {
-  background: #111;
-  color: #fff;
-  padding: 40px 0 30px 0;
+  background: #fff;
+  background-image: url('/faq-bg-lines.png'); /* Add topographic lines image */
+  background-size: cover;
+  background-position: center;
+  padding: 56px 0 32px 0;
   text-align: center;
+  border-bottom: 12px solid #ffc300;
+  border-top: 8px solid #233c74;
 }
 .faq-list {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 }
 .faq-item {
   background: #fff;
-  color: #0a174e;
-  border-radius: 1em;
-  margin-bottom: 1em;
-  padding: 0.5em 1em;
-  text-align: left;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(10,23,78,0.13);
+  border-left: 6px solid #ffc300;
+  border-right: 6px solid #233c74;
+  padding: 0.7em 2em;
   display: flex;
   align-items: center;
+  min-height: 64px;
+  font-size: 1.25em;
+  font-weight: 500;
+  color: #233c74;
+  position: relative;
 }
 .faq-question {
-  background: #ffc300;
-  color: #0a174e;
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 2em;
-  height: 2em;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin-right: 1em;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #233c74;
+  margin-right: 1.2em;
   cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+}
+.faq-question.open {
+  color: #233c74;
 }
 .faq-answer {
   flex: 1;
+  font-size: 1.15em;
+  color: #233c74;
+  padding: 0.5em 0 0.5em 0;
 }
 
 /* Contact */
@@ -926,7 +943,11 @@ body {
   .hero-content h1 {
     font-size: 2rem;
   }
-  .about-us h2, .services h2, .founders h2, .contact h2, .faq h2 {
-    font-size: 1.3rem;
+  .faq h2 {
+    font-size: 2.7rem;
+    font-weight: 900;
+    color: #233c74;
+    margin-bottom: 0.2em;
+    letter-spacing: 0.01em;
   }
 }

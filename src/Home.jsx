@@ -153,18 +153,26 @@ export function App() {
         {/* FAQ */}
         <section class="faq">
           <h2>FAQ's</h2>
+          <div class="faq-subtitle">
+            Everything you need to know about us and our services.<br />
+            Can't find an answer? <a href="#" style={{color:'#233c74',textDecoration:'underline'}}>Chat with our team</a>
+          </div>
           <div class="faq-list">
             <div class="faq-item">
               <button class="faq-question">+</button>
-              <div class="faq-answer"> </div>
+              <div class="faq-answer"></div>
+            </div>
+            <div class="faq-item open">
+              <button class="faq-question open">-</button>
+              <div class="faq-answer"></div>
             </div>
             <div class="faq-item">
               <button class="faq-question">+</button>
-              <div class="faq-answer"> </div>
+              <div class="faq-answer"></div>
             </div>
             <div class="faq-item">
               <button class="faq-question">+</button>
-              <div class="faq-answer"> </div>
+              <div class="faq-answer"></div>
             </div>
           </div>
         </section>
