@@ -780,8 +780,19 @@ body {
 
 /* FAQ */
 .faq {
-  background: #fff;
-  background-image: url('/faq-bg-lines.png'); /* Add topographic lines image */
+  background: #fff url('./src/assets/back.png') center/cover no-repeat;
+  position: relative;
+}
+.faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.85);
+  pointer-events: none;
+  z-index: 0;
   background-size: cover;
   background-position: center;
   padding: 56px 0 32px 0;
