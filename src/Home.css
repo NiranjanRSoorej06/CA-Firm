@@ -22,12 +22,13 @@
   margin-bottom: 2.5em;
 }
 .contact-title {
-  font-size: 2.7rem;
-  font-weight: 700;
-  color: #ffc300;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #000 !important;
   margin-bottom: 0.2em;
-}
-.contact-subtitle {
+  letter-spacing: 0.01em;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  text-align: center;
   font-size: 1.18rem;
   color: #ffc300;
   opacity: 0.95;
@@ -285,7 +286,7 @@
 .founder-name {
   font-size: 1.25em;
   font-weight: 600;
-  color: #222;
+  color: #000 !important;
   margin-bottom: 0.2em;
   text-align: center;
 }
@@ -782,6 +783,10 @@ body {
 .faq {
   background: #fff url('./src/assets/back.png') center/cover no-repeat;
   position: relative;
+  padding: 56px 0 32px 0;
+  text-align: center;
+  border-bottom: 12px solid #ffc300;
+  border-top: 8px solid #233c74;
 }
 .faq::before {
   content: '';
@@ -795,10 +800,6 @@ body {
   z-index: 0;
   background-size: cover;
   background-position: center;
-  padding: 56px 0 32px 0;
-  text-align: center;
-  border-bottom: 12px solid #ffc300;
-  border-top: 8px solid #233c74;
 }
 .faq-list {
   max-width: 700px;
@@ -955,10 +956,26 @@ body {
     font-size: 2rem;
   }
   .faq h2 {
-    font-size: 2.7rem;
-    font-weight: 900;
-    color: #233c74;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #0a174e;
+  margin-bottom: 0.1em;
+  letter-spacing: 0.01em;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  .faq-subtitle {
+    font-size: 1.18rem;
+    color: #222;
+    opacity: 1;
     margin-bottom: 0.2em;
-    letter-spacing: 0.01em;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    text-align: center;
+  }
+  .faq-subtitle a {
+    color: #233c74;
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 1.08rem;
+    font-family: inherit;
+  }
   }
 }

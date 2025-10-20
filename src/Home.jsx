@@ -7,12 +7,11 @@ export function App() {
       <nav class="fixed-navbar">
         <div class="navbar-content">
           <div class="navbar-logos">
-            <img src="/ca-logo.png" alt="CA India" class="navbar-logo ca-logo" />
+            <img src="/src/assets/logo-1.svg" alt="Logo 1" class="navbar-logo ca-logo" />
             <div class="sbcpl-logo-group">
-              <img src="/sbcpl-logo.png" alt="SBCPL" class="navbar-logo sbcpl-logo" />
+              <img src="/src/assets/logo-2.svg" alt="SBCPL" class="navbar-logo sbcpl-logo" />
               <div class="sbcpl-texts">
                 <span class="sbcpl-main">SBCPL</span>
-                <span class="sbcpl-sub">SBC</span>
               </div>
             </div>
           </div>
@@ -152,27 +151,31 @@ export function App() {
 
         {/* FAQ */}
         <section class="faq">
-          <h2>FAQ's</h2>
-          <div class="faq-subtitle">
-            Everything you need to know about us and our services.<br />
-            Can't find an answer? <a href="#" style={{color:'#233c74',textDecoration:'underline'}}>Chat with our team</a>
+          <div className="faq-header" style={{marginBottom: '2.5em', marginTop: '1em'}}>
+            <div className="faq-title" style={{fontSize: '2.8rem', fontWeight: 900, color: '#0a174e', marginBottom: '0.2em', letterSpacing: '0.01em', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', textAlign: 'center'}}>
+              FAQ’s
+            </div>
+            <div className="faq-subtitle" style={{fontSize: '1.08rem', color: '#233c74', opacity: 0.85, marginBottom: '0.2em', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', textAlign: 'center'}}>
+              Everything you need to know about us and our services.<br />
+              Can’t find an answer? <a href="#" style={{color:'#233c74', textDecoration:'underline', fontWeight: 500, fontSize: '1.08rem'}}>Chat with our team</a>
+            </div>
           </div>
-          <div class="faq-list">
-            <div class="faq-item">
-              <button class="faq-question">+</button>
-              <div class="faq-answer"></div>
+          <div class="faq-list" style={{maxWidth: '700px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5em'}}>
+            <div class="faq-item" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #ffc300', borderRight: '6px solid #fff'}}>
+              <button class="faq-question" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>+</button>
+              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
             </div>
-            <div class="faq-item open">
-              <button class="faq-question open">-</button>
-              <div class="faq-answer"></div>
+            <div class="faq-item open" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #fff', borderRight: '6px solid #233c74'}}>
+              <button class="faq-question open" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>-</button>
+              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
             </div>
-            <div class="faq-item">
-              <button class="faq-question">+</button>
-              <div class="faq-answer"></div>
+            <div class="faq-item" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #ffc300', borderRight: '6px solid #fff'}}>
+              <button class="faq-question" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>+</button>
+              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
             </div>
-            <div class="faq-item">
-              <button class="faq-question">+</button>
-              <div class="faq-answer"></div>
+            <div class="faq-item" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #ffc300', borderRight: '6px solid #fff'}}>
+              <button class="faq-question" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>+</button>
+              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
             </div>
           </div>
         </section>
