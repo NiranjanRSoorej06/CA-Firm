@@ -87,7 +87,7 @@
   max-height: 180px;
 }
 .contact-submit-btn {
-  background: linear-gradient(90deg, #ffc300 60%, #ffe066 100%);
+  background: #ffc300;
   color: #233c74;
   border: none;
   border-radius: 8px;
