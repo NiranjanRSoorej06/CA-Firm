@@ -1,0 +1,227 @@
+/* Import Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* Global styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7fafc;
+}
+
+.App {
+  font-family: 'Inter', sans-serif;
+  background: #f7fafc;
+}
+
+/* Enhanced Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* Better text rendering */
+* {
+  text-rendering: optimizeLegibility;
+}
+
+/* Classic Color Palette */
+:root {
+  --classic-navy: #1a365d;
+  --classic-gold: #d69e2e;
+  --classic-cream: #faf8f5;
+  --classic-warm-gray: #f7f5f2;
+  --classic-text: #2d3748;
+  --classic-muted: #718096;
+  --classic-border: #e2e8f0;
+  --classic-shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* Classic Design Elements */
+.classic-card {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border: 1px solid var(--classic-border);
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 6px var(--classic-shadow),
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.classic-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 15px rgba(0, 0, 0, 0.1),
+    0 3px 6px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.classic-button {
+  background: linear-gradient(135deg, var(--classic-navy), #2c5282);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.classic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.classic-button:hover::before {
+  left: 100%;
+}
+
+.classic-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(26, 54, 93, 0.3);
+}
+
+/* Classic Navigation Styles */
+.nav-link {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--classic-navy);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.025em;
+  padding: 8px 0;
+}
+
+.nav-link:hover {
+  color: var(--classic-gold);
+  font-weight: 600;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--classic-gold), #f6ad55);
+  border-radius: 1px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  color: #374151 !important;
+  margin-top: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 1rem 0;
+  width: 20rem;
+  max-height: 24rem;
+  overflow-y: auto;
+  border: 1px solid #f3f4f6;
+  z-index: 999999 !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Smooth header transitions */
+.header-smooth {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced backdrop blur effect */
+.glass-effect {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+
+
+/* Custom styles that were in the original HTML */
+.hero-bg {
+  background-size: cover;
+  background-position: center;
+}
+
+.custom-dark-blue {
+  background-color: #00144E;
+}
+
+.services-card-bg {
+  background: linear-gradient(135deg, #1F3A89 0%, #00144E 100%);
+}
+
+.footer-bg {
+  background-color: #00144E;
+}
+
+.footer-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
