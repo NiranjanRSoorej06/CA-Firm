@@ -4,6 +4,7 @@ import { useState, useEffect } from 'preact/hooks';
 export function App() {
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [servicesHoverTimeout, setServicesHoverTimeout] = useState(null);
 
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -12,6 +13,23 @@ export function App() {
   const toggleServicesDropdown = (e) => {
     e.stopPropagation();
     setServicesDropdownOpen(!servicesDropdownOpen);
+  };
+
+  const openServicesDropdown = () => {
+    if (servicesHoverTimeout) {
+      clearTimeout(servicesHoverTimeout);
+    }
+    setServicesDropdownOpen(true);
+  };
+
+  const closeServicesDropdown = () => {
+    if (servicesHoverTimeout) {
+      clearTimeout(servicesHoverTimeout);
+    }
+    const timeout = setTimeout(() => {
+      setServicesDropdownOpen(false);
+    }, 400); // 400ms delay before closing
+    setServicesHoverTimeout(timeout);
   };
 
   useEffect(() => {
@@ -65,14 +83,14 @@ export function App() {
           <ul class="navbar-links">
             <li>Home</li>
             <li>About</li>
-            <li class="navbar-dropdown" onClick={toggleServicesDropdown}>
+            <li class="navbar-dropdown" onMouseEnter={openServicesDropdown} onMouseLeave={closeServicesDropdown}>
               Services <span class="navbar-caret" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
                   <path d="M6 9l6 6 6-6" stroke="#233c74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               {servicesDropdownOpen && (
-                <div class="navbar-dropdown-menu">
+                <div class="navbar-dropdown-menu" onMouseEnter={openServicesDropdown} onMouseLeave={closeServicesDropdown}>
                   <a href="#services">Income Tax</a>
                   <a href="#services">GST</a>
                   <a href="#services">TDS</a>
