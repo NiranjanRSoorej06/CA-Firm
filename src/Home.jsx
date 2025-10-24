@@ -1,6 +1,31 @@
 import './Home.css';
+import { useState } from 'preact/hooks';
 
 export function App() {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: "What services do you offer?",
+      answer: "We offer comprehensive accounting services including taxation, corporate compliance, statutory registrations, business structuring, project advisory, and financial consulting to help businesses navigate regulations and achieve their goals."
+    },
+    {
+      question: "How do I get started with your services?",
+      answer: "Getting started is simple! Contact us for a free consultation where we'll discuss your business needs and recommend the best services for you. You can reach us through our contact form, phone, or email."
+    },
+    {
+      question: "What are your service fees?",
+      answer: "Our fees vary depending on the complexity and scope of services required. We offer competitive pricing and transparent fee structures. Contact us for a personalized quote based on your specific business needs."
+    },
+    {
+      question: "Do you provide ongoing support and consultation?",
+      answer: "Yes, we provide ongoing support and consultation to ensure your business remains compliant and optimized. Our team is available to answer questions, provide guidance, and adapt our services as your business grows and evolves."
+    }
+  ];
   return (
     <>
       {/* Fixed Navbar */}
@@ -160,23 +185,72 @@ export function App() {
               Can’t find an answer? <a href="#" style={{color:'#233c74', textDecoration:'underline', fontWeight: 500, fontSize: '1.08rem'}}>Chat with our team</a>
             </div>
           </div>
-          <div class="faq-list" style={{maxWidth: '700px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5em'}}>
-            <div class="faq-item" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #ffc300', borderRight: '6px solid #fff'}}>
-              <button class="faq-question" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>+</button>
-              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
-            </div>
-            <div class="faq-item open" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #fff', borderRight: '6px solid #233c74'}}>
-              <button class="faq-question open" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>-</button>
-              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
-            </div>
-            <div class="faq-item" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #ffc300', borderRight: '6px solid #fff'}}>
-              <button class="faq-question" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>+</button>
-              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
-            </div>
-            <div class="faq-item" style={{background: '#fff', borderRadius: '18px', boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', padding: '0.7em 2em', display: 'flex', alignItems: 'center', minHeight: '64px', fontSize: '1.25em', fontWeight: 500, color: '#233c74', position: 'relative', borderLeft: '6px solid #ffc300', borderRight: '6px solid #fff'}}>
-              <button class="faq-question" style={{background: 'none', border: 'none', fontSize: '2.2em', fontWeight: 700, color: '#233c74', marginRight: '1.2em', cursor: 'pointer', outline: 'none', transition: 'color 0.2s'}}>+</button>
-              <div class="faq-answer" style={{flex: 1, fontSize: '1.15em', color: '#233c74', padding: '0.5em 0'}}></div>
-            </div>
+          <div class="faq-list" style={{maxWidth: '700px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.2em'}}>
+            {faqs.map((faq, index) => (
+              <div 
+                key={index}
+                class="faq-item" 
+                style={{
+                  background: '#fff', 
+                  borderRadius: '18px', 
+                  boxShadow: '0 8px 32px 0 rgba(10,23,78,0.13)', 
+                  padding: '0.7em 2em', 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  minHeight: '64px', 
+                  fontSize: '1em', 
+                  fontWeight: 500, 
+                  color: '#233c74', 
+                  position: 'relative', 
+                  borderLeft: expandedFaq === index ? '6px solid #233c74' : '6px solid #ffc300', 
+                  borderRight: expandedFaq === index ? '6px solid #ffc300' : '6px solid #fff',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onClick={() => toggleFaq(index)}
+              >
+                <div style={{display: 'flex', alignItems: 'center', minHeight: '50px', position: 'relative'}}>
+                  <button 
+                    class="faq-question" 
+                    style={{
+                      background: 'none', 
+                      border: 'none', 
+                      fontSize: '1.8em', 
+                      fontWeight: 700, 
+                      color: '#233c74', 
+                      cursor: 'pointer', 
+                      outline: 'none', 
+                      transition: 'transform 0.3s ease',
+                      position: 'absolute',
+                      left: '-35px',
+                      width: '40px',
+                      textAlign: 'left'
+                    }}
+                  >
+                    {expandedFaq === index ? '-' : '+'}
+                  </button>
+                  <div style={{flex: 1, fontSize: '1em', color: '#233c74', fontWeight: 600, textAlign: 'center', paddingLeft: '30px', paddingRight: '30px'}}>
+                    {faq.question}
+                  </div>
+                </div>
+                <div 
+                  class="faq-answer" 
+                  style={{
+                    maxHeight: expandedFaq === index ? '200px' : '0',
+                    overflow: 'hidden',
+                    transition: 'max-height 0.3s ease, padding 0.3s ease',
+                    padding: expandedFaq === index ? '0 30px 1em 30px' : '0 30px 0 30px',
+                    fontSize: '0.9em',
+                    color: '#233c74',
+                    lineHeight: '1.5',
+                    opacity: expandedFaq === index ? 1 : 0,
+                    textAlign: 'center'
+                  }}
+                >
+                  {faq.answer}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
