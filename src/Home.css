@@ -785,7 +785,7 @@ body {
   position: relative;
   padding: 56px 0 32px 0;
   text-align: center;
-  border-bottom: 12px solid #ffc300;
+  border-bottom: none;
   border-top: 8px solid #233c74;
 }
 .faq::before {
