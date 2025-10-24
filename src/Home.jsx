@@ -177,7 +177,7 @@ export function App() {
         {/* FAQ */}
         <section class="faq">
           <div className="faq-header" style={{marginBottom: '2.5em', marginTop: '1em'}}>
-            <div className="faq-title" style={{fontSize: '2.8rem', fontWeight: 900, color: '#0a174e', marginBottom: '0.2em', letterSpacing: '0.01em', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', textAlign: 'center'}}>
+            <div className="faq-title" style={{fontSize: '2.8rem', fontWeight: 900, color: '#000', marginBottom: '0.2em', letterSpacing: '0.01em', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', textAlign: 'center'}}>
               FAQ’s
             </div>
             <div className="faq-subtitle" style={{fontSize: '1.08rem', color: '#233c74', opacity: 0.85, marginBottom: '0.2em', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', textAlign: 'center'}}>
@@ -217,7 +217,7 @@ export function App() {
                       border: 'none', 
                       fontSize: '1.8em', 
                       fontWeight: 700, 
-                      color: '#233c74', 
+                      color: '#000', 
                       cursor: 'pointer', 
                       outline: 'none', 
                       transition: 'transform 0.3s ease',
