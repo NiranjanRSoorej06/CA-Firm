@@ -138,38 +138,47 @@ export function App() {
             <div class="service-card">
               <div class="service-icon">📄</div>
               <div class="service-label">Income Tax</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">🧾</div>
               <div class="service-label">GST</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">🛡️</div>
               <div class="service-label">TDS</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">🏢</div>
               <div class="service-label">Partnership Firm Compliance</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">🏛️</div>
               <div class="service-label">Company Law & ROC Compliance</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">📝</div>
               <div class="service-label">Statutory Registrations</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">💰</div>
               <div class="service-label">Loan & Finance Facilitation</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">📊</div>
               <div class="service-label">Project reports & Investment Proposals</div>
+              <div class="service-cta">→</div>
             </div>
             <div class="service-card">
               <div class="service-icon">⚖️</div>
               <div class="service-label">LLP Compliance Services</div>
+              <div class="service-cta">→</div>
             </div>
           </div>
         </section>
