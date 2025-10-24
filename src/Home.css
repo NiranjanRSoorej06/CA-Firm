@@ -11,7 +11,7 @@
   background-image: url('/contact-bg-lines.png'); /* optional: for white lines effect */
   background-size: cover;
   background-position: center;
-  padding: 64px 0 32px 0;
+  padding: 32px 0 32px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,16 +22,21 @@
   margin-bottom: 2.5em;
 }
 .contact-title {
-  font-size: 3.2rem;
-  font-weight: 900;
-  color: #000 !important;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff !important;
   margin-bottom: 0.2em;
   letter-spacing: 0.01em;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   text-align: center;
-  font-size: 1.18rem;
-  color: #ffc300;
+}
+.contact-subtitle {
+  font-size: 1.6rem;
+  color: #fff;
   opacity: 0.95;
+  margin-bottom: 0.2em;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  text-align: center;
 }
 .contact-main {
   display: flex;
