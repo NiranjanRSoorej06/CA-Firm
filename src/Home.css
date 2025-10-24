@@ -740,7 +740,7 @@ body {
 .services-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.2em 2.2em;
+  gap: 2.8em 2.8em; /* slightly larger gaps between tiles */
   justify-content: center;
   margin: 0 auto;
   max-width: 900px;
@@ -751,13 +751,13 @@ body {
   color: #233c74;
   border-radius: 1.1em;
   box-shadow: 0 8px 32px 0 rgba(10,23,78,0.13);
-  padding: 2.2em 1.2em 2.4em 1.2em; /* extra top/bottom room for overlapping icon + bottom CTA */
+  padding: 1.5em 1.1em 1.7em 1.1em; /* add small top padding for tile content */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   min-width: 210px;
-  min-height: 150px;
+  min-height: 96px; /* even shorter tiles */
   transition: box-shadow 0.2s;
   position: relative;
   overflow: visible; /* allow icon to overlap outside card */
@@ -775,7 +775,7 @@ body {
   justify-content: center;
   font-size: 1.6rem;
   box-shadow: 0 4px 14px 0 rgba(10,23,78,0.15);
-  border: 3px solid #ffc300; /* yellow ring */
+  border: 4px solid #ffc300; /* thicker yellow ring */
   position: absolute;
   top: -32px; /* half outside the top edge */
   left: 50%;
@@ -786,25 +786,25 @@ body {
   font-size: 1.15em;
   font-weight: 700;
   color: #fff; /* white text on yellow card */
-  margin-top: 1.2em; /* space below overlapped icon */
+  margin-top: 0.7em; /* tighter spacing below icon */
   text-align: center;
 }
 
 /* Bottom-center circular arrow CTA */
 .service-cta {
   position: absolute;
-  bottom: 12px;
+  bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   border: 2px solid #fff;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1;
 }
 
