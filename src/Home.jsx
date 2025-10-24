@@ -1,10 +1,34 @@
 import './Home.css';
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect, useRef } from 'preact/hooks';
 
 export function App() {
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [servicesHoverTimeout, setServicesHoverTimeout] = useState(null);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with scroll-animate class
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    animatedElements.forEach(el => observer.observe(el));
+
+    return () => {
+      animatedElements.forEach(el => observer.unobserve(el));
+    };
+  }, []);
 
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
@@ -122,12 +146,12 @@ export function App() {
 
         {/* About Us */}
         <section class="about-us">
-          <h2 class="about-title">About Us</h2>
+          <h2 class="about-title scroll-animate">About Us</h2>
           <div class="about-underline"></div>
-          <p class="about-desc">
+          <p class="about-desc scroll-animate">
             SBCPL is a professionally managed consulting house headquartered in Kochi, Kerala, India, with a strong presence in the industry since 2013. We provide an integrated spectrum of services spanning taxation, corporate compliance, statutory registrations, business structuring, project advisory, and financial consulting. Our firm is essentially a one-stop solution for businesses seeking support in navigating financial regulations and corporate governance, allowing clients to address all aspects of their business needs through a single trusted partner<br />capitaire.com
           </p>
-          <button class="about-btn">
+          <button class="about-btn scroll-animate">
             Explore More <span class="about-btn-icon">&#8594;</span>
           </button>
         </section>
@@ -152,12 +176,12 @@ export function App() {
 
         {/* Founders */}
         <section class="founders">
-          <h2 class="founders-title">Meet our founders</h2>
+          <h2 class="founders-title scroll-animate">Meet our founders</h2>
           <div class="founders-underline"></div>
-          <p class="founders-desc">
+          <p class="founders-desc scroll-animate">
             The Core Team represents our deep-rooted values and wide spectrum of capabilities. We make a consistent and conscious effort to gauge the magnitude of future business hurdles and develop appropriate solutions. Our resolute will, flexible approach and clinical precision has the power to resolve the toughest of financial problems of your business.
           </p>
-          <button class="founders-btn">
+          <button class="founders-btn scroll-animate">
             Explore More <span class="about-btn-icon">&#8594;</span>
           </button>
           <div class="founders-list">
@@ -187,8 +211,8 @@ export function App() {
 
         {/* Services */}
         <section class="services">
-          <h2 class="services-title">Our Services</h2>
-          <div class="services-desc">
+          <h2 class="services-title scroll-animate">Our Services</h2>
+          <div class="services-desc scroll-animate">
             The Core Team represents our deep-rooted values and wide spectrum of capabilities. We make a consistent and conscious effort to gauge the magnitude of future business hurdles and develop appropriate solutions. Our resolute will, flexible approach and clinical precision has the power to resolve the toughest of financial problems of your business.
           </div>
           <div class="services-list">
@@ -278,13 +302,13 @@ export function App() {
 
         {/* FAQ */}
         <section class="faq">
-          <div className="faq-header" style={{marginBottom: '2.5em', marginTop: '1em'}}>
+          <div className="faq-header scroll-animate" style={{marginBottom: '2.5em', marginTop: '1em'}}>
             <div className="faq-title" style={{fontSize: '2.8rem', fontWeight: 900, color: '#000', marginBottom: '0.2em', letterSpacing: '0.01em', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', textAlign: 'center'}}>
-              FAQ’s
+              FAQ's
             </div>
             <div className="faq-subtitle" style={{fontSize: '1.08rem', color: '#233c74', opacity: 0.85, marginBottom: '0.2em', fontFamily: 'Inter, Segoe UI, Arial, sans-serif', textAlign: 'center'}}>
               Everything you need to know about us and our services.<br />
-              Can’t find an answer? <a href="#" style={{color:'#233c74', textDecoration:'underline', fontWeight: 500, fontSize: '1.08rem'}}>Chat with our team</a>
+              Can't find an answer? <a href="#" style={{color:'#233c74', textDecoration:'underline', fontWeight: 500, fontSize: '1.08rem'}}>Chat with our team</a>
             </div>
           </div>
           <div class="faq-list" style={{maxWidth: '700px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.2em'}}>
@@ -359,7 +383,7 @@ export function App() {
         {/* Contact */}
         <section class="contact-section">
           <div class="contact-bg">
-            <div class="contact-header">
+            <div class="contact-header scroll-animate">
               <h2 class="contact-title">Get In Touch</h2>
               <div class="contact-subtitle">We're here to help you. We'd love to hear from you</div>
             </div>
