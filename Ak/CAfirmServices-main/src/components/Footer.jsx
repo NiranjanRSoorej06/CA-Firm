@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Site Map Section */}
           <div className="md:col-span-4 animate-fadeIn">
-            <h4 className="font-bold mb-6 text-2xl text-white border-b-2 border-cyan-500 pb-2 inline-block transition-all duration-300 hover:border-cyan-300">Site Map</h4>
+            <h4 className="font-bold mb-6 text-xl text-white border-b-2 border-cyan-500 pb-2 inline-block transition-all duration-300 hover:border-cyan-300">Site Map</h4>
             <style>{`
               @keyframes fadeIn {
                 from { opacity: 0; transform: translateY(20px); }
@@ -32,31 +32,31 @@ const Footer = () => {
               <li>
                 <a href="#" className="hover:text-cyan-400 transition-colors duration-300 flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-3 text-cyan-500 group-hover:translate-x-1 transition-transform duration-300"></i>
-                  <span className="text-lg">Home</span>
+                  <span className="text-base">Home</span>
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-cyan-400 transition-colors duration-300 flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-3 text-cyan-500 group-hover:translate-x-1 transition-transform duration-300"></i>
-                  <span className="text-lg">Services</span>
+                  <span className="text-base">Services</span>
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-cyan-400 transition-colors duration-300 flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-3 text-cyan-500 group-hover:translate-x-1 transition-transform duration-300"></i>
-                  <span className="text-lg">Contact</span>
+                  <span className="text-base">Contact</span>
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-cyan-400 transition-colors duration-300 flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-3 text-cyan-500 group-hover:translate-x-1 transition-transform duration-300"></i>
-                  <span className="text-lg">About Us</span>
+                  <span className="text-base">About Us</span>
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-cyan-400 transition-colors duration-300 flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-3 text-cyan-500 group-hover:translate-x-1 transition-transform duration-300"></i>
-                  <span className="text-lg">FAQs</span>
+                  <span className="text-base">FAQs</span>
                 </a>
               </li>
             </ul>
@@ -64,18 +64,18 @@ const Footer = () => {
           
           {/* Legal Section */}
           <div className="md:col-span-3 animate-fadeIn" style={{animationDelay: '0.2s'}}>
-            <h4 className="font-bold mb-6 text-2xl text-white border-b-2 border-cyan-500 pb-2 inline-block transition-all duration-300 hover:border-cyan-300">Legal</h4>
+            <h4 className="font-bold mb-6 text-xl text-white border-b-2 border-cyan-500 pb-2 inline-block transition-all duration-300 hover:border-cyan-300">Legal</h4>
             <ul className="space-y-3 text-gray-300">
               <li>
                 <a href="#" className="hover:text-cyan-400 transition-colors duration-300 flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-3 text-cyan-500 group-hover:translate-x-1 transition-transform duration-300"></i>
-                  <span className="text-lg">Privacy Policy</span>
+                  <span className="text-base">Privacy Policy</span>
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-cyan-400 transition-colors duration-300 flex items-center group">
                   <i className="fas fa-chevron-right text-xs mr-3 text-cyan-500 group-hover:translate-x-1 transition-transform duration-300"></i>
-                  <span className="text-lg">Terms of Service</span>
+                  <span className="text-base">Terms of Service</span>
                 </a>
               </li>
             </ul>
@@ -86,8 +86,8 @@ const Footer = () => {
             <div className="bg-gradient-to-br from-white to-gray-100 p-4 rounded-2xl inline-block shadow-2xl mb-3 transform hover:scale-110 hover:rotate-3 transition-all duration-500">
               <img src={sbcLogo} alt="SBC Logo" className="w-14 h-14" style={{filter: 'brightness(0) saturate(100%) invert(45%) sepia(95%) saturate(456%) hue-rotate(133deg) brightness(92%) contrast(101%)'}} />
             </div>
-            <p className="mt-2 text-xl font-bold text-cyan-400 tracking-wide">SBCPL</p>
-            <p className="text-base text-gray-400 mt-1">Your Trusted Compliance Partner</p>
+            <p className="mt-2 text-lg font-bold text-cyan-400 tracking-wide">SBCPL</p>
+            <p className="text-sm text-gray-400 mt-1">Your Trusted Compliance Partner</p>
           </div>
         </div>
         

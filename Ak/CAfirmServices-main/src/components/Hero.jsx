@@ -33,13 +33,13 @@ const Hero = ({ heroData }) => {
   return (
     <section className="text-white min-h-screen flex items-center justify-center" style={{...heroStyle, paddingTop: '0'}}>
       <div className="text-center px-4">
-        <p className="text-2xl mb-4 text-gray-200 transition-opacity duration-300 font-medium tracking-widest uppercase">
+        <p className="text-xl mb-4 text-gray-200 transition-opacity duration-300 font-medium tracking-widest uppercase">
           {heroData.serviceType}
         </p>
         
         {/* Animated title with color change effect */}
         <div className="relative overflow-hidden">
-          <h1 className={`text-7xl md:text-9xl font-extrabold transition-all duration-500 ease-in-out text-white tracking-tight ${
+          <h1 className={`text-4xl md:text-6xl font-extrabold transition-all duration-500 ease-in-out text-white tracking-tight ${
             isChanging 
               ? 'opacity-0 transform translate-y-4 scale-95' 
               : 'opacity-100 transform translate-y-0 scale-100'
@@ -60,7 +60,7 @@ const Hero = ({ heroData }) => {
           )}
         </div>
         
-        <p className={`mt-8 max-w-4xl mx-auto text-2xl text-gray-100 leading-relaxed font-light transition-all duration-400 ${
+        <p className={`mt-8 max-w-4xl mx-auto text-lg text-gray-100 leading-relaxed font-light transition-all duration-400 ${
           isChanging ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
         }`}
         style={{

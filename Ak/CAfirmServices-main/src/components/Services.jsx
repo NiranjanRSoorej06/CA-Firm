@@ -82,9 +82,9 @@ const Services = ({ servicesData }) => {
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-white">
+    <section className="py-6 sm:py-8 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl shadow-2xl p-10 md:p-12 relative overflow-hidden" style={containerStyle}>
+        <div className="rounded-2xl shadow-2xl p-5 md:p-6 relative overflow-hidden mx-auto" style={{...containerStyle, maxWidth: '1100px'}}>
           {/* Magnetic Lines Background */}
           <div style={{
             position: 'absolute',
@@ -99,62 +99,62 @@ const Services = ({ servicesData }) => {
             zIndex: 0
           }}>
             <MagnetLines
-              rows={10}
-              columns={15}
+              rows={8}
+              columns={12}
               containerSize="100%"
               lineColor="rgba(100, 150, 255, 0.8)"
-              lineWidth="3px"
-              lineHeight="50px"
+              lineWidth="2px"
+              lineHeight="40px"
               baseAngle={0}
             />
           </div>
 
           {/* Title with underline and fade up animation */}
-          <div ref={titleRef} className={`transition-all duration-1000 ease-out relative z-10 ${
+          <div ref={titleRef} className={`transition-all duration-1000 ease-out relative z-10 py-4 ${
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-5xl font-bold text-center text-white mb-3 tracking-normal">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-2 tracking-normal">
               {servicesData.title}
             </h2>
-            <div style={{width: '260px', height: '3px', backgroundColor: '#FCD34D', margin: '0 auto 2.5rem auto'}}></div>
+            <div style={{width: '160px', height: '2px', backgroundColor: '#FCD34D', margin: '0 auto 1rem auto'}}></div>
           </div>
           
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-4xl mx-auto relative z-10">
             {servicesData.items.map((service, index) => (
               <div 
                 key={index} 
-                className={`bg-white p-6 rounded-xl shadow-lg flex flex-col transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-1 group ${
+                className={`bg-white p-3 rounded-xl shadow-lg flex flex-col transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-1 group ${
                   animateCards 
                     ? 'opacity-100 translate-y-0 scale-100' 
                     : 'opacity-0 translate-y-4 scale-95'
                 }`}
                 style={{
                   transitionDelay: `${index * 100}ms`,
-                  minHeight: '140px',
-                  borderLeft: '6px solid #FCD34D',
-                  borderRight: '6px solid #FCD34D',
+                  minHeight: '100px',
+                  borderLeft: '3px solid #FCD34D',
+                  borderRight: '3px solid #FCD34D',
                   borderTop: '2px solid #FCD34D',
                   borderBottom: '2px solid #FCD34D'
                 }}
               >
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 tracking-tight transition-colors duration-300 group-hover:text-blue-700" style={{color: '#00144E'}}>
+                  <h3 className="text-base font-bold mb-2 tracking-tight transition-colors duration-300 group-hover:text-blue-700" style={{color: '#00144E'}}>
                     {service.title}
                   </h3>
-                  <p className="text-base text-gray-600 leading-relaxed transition-colors duration-300 group-hover:text-gray-800">
+                  <p className="text-sm text-gray-600 leading-relaxed transition-colors duration-300 group-hover:text-gray-800">
                     {service.description}
                   </p>
                 </div>
                 <div className="flex justify-end mt-4">
                   <button 
-                    className="rounded-full h-9 w-9 flex items-center justify-center transition-all duration-300 hover:bg-blue-600 hover:scale-110 group-hover:border-blue-600" 
+                    className="rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300 hover:bg-blue-600 hover:scale-110 group-hover:border-blue-600" 
                     style={{
                       border: '2px solid #00144E',
                       backgroundColor: 'transparent'
                     }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-all duration-300 group-hover:translate-x-1">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-all duration-300 group-hover:translate-x-1">
                       <path d="M8 3L13 8L8 13M13 8H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#00144E] group-hover:text-white"/>
                     </svg>
                   </button>
@@ -165,15 +165,15 @@ const Services = ({ servicesData }) => {
         </div>
         
         {/* Consultation Booking - Outside blue container, in white section */}
-        <div className={`text-center mt-8 transition-all duration-1000 ${
+        <div className={`text-center mt-4 transition-all duration-1000 ${
           animateCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`} style={{transitionDelay: '600ms'}}>
-          <p className="text-gray-700 mb-6 text-lg font-normal tracking-wide animate-pulse">
+          <p className="text-gray-700 mb-3 text-base font-normal tracking-wide animate-pulse">
             Want to partner with SBCPL? Contact us for a consultation.
           </p>
           <a 
             href="#" 
-            className="inline-block text-white px-10 py-4 rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-300 text-lg font-semibold shadow-xl tracking-wide transform relative overflow-hidden group" 
+            className="inline-block text-white px-8 py-3 rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-300 text-base font-semibold shadow-xl tracking-wide transform relative overflow-hidden group" 
             style={{backgroundColor: '#1F3A89'}}
           >
             <span className="relative z-10">Book a Free Consultation</span>
