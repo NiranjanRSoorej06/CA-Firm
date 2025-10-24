@@ -139,7 +139,7 @@
   color: #ffc300;
 }
 .contact-lower {
-  background: #ffc300;
+  background: #fff;
   padding: 2.5em 0 2.5em 0;
   display: flex;
   justify-content: center;
@@ -156,12 +156,12 @@
 }
 .contact-cta-btn {
   background: #233c74;
-  color: #ffc300;
+  color: #fff;
   border: none;
   border-radius: 2em;
   font-weight: 600;
-  font-size: 1.13em;
-  padding: 0.9em 2.5em;
+  font-size: 0.9em;
+  padding: 0.8em 2em;
   cursor: pointer;
   transition: background 0.2s;
   box-shadow: 0 2px 8px 0 rgba(10,23,78,0.08);
