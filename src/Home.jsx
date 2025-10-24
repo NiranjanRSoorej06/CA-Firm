@@ -1,12 +1,34 @@
 import './Home.css';
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 
 export function App() {
   const [expandedFaq, setExpandedFaq] = useState(null);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
+
+  const toggleServicesDropdown = (e) => {
+    e.stopPropagation();
+    setServicesDropdownOpen(!servicesDropdownOpen);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (servicesDropdownOpen) {
+        setServicesDropdownOpen(false);
+      }
+    };
+
+    if (servicesDropdownOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [servicesDropdownOpen]);
 
   const faqs = [
     {
@@ -43,8 +65,25 @@ export function App() {
           <ul class="navbar-links">
             <li>Home</li>
             <li>About</li>
-            <li class="navbar-dropdown">
-              Services <span class="navbar-caret">&#9660;</span>
+            <li class="navbar-dropdown" onClick={toggleServicesDropdown}>
+              Services <span class="navbar-caret" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                  <path d="M6 9l6 6 6-6" stroke="#233c74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              {servicesDropdownOpen && (
+                <div class="navbar-dropdown-menu">
+                  <a href="#services">Income Tax</a>
+                  <a href="#services">GST</a>
+                  <a href="#services">TDS</a>
+                  <a href="#services">Partnership Firm Compliance</a>
+                  <a href="#services">Company Law & ROC Compliance</a>
+                  <a href="#services">Statutory Registrations</a>
+                  <a href="#services">Loan & Finance Facilitation</a>
+                  <a href="#services">Project reports & Investment Proposals</a>
+                  <a href="#services">LLP Compliance Services</a>
+                </div>
+              )}
             </li>
             <li>Contact</li>
           </ul>
@@ -138,47 +177,83 @@ export function App() {
             <div class="service-card">
               <div class="service-icon">📄</div>
               <div class="service-label">Income Tax</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">🧾</div>
               <div class="service-label">GST</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">🛡️</div>
               <div class="service-label">TDS</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">🏢</div>
               <div class="service-label">Partnership Firm Compliance</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">🏛️</div>
               <div class="service-label">Company Law & ROC Compliance</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">📝</div>
               <div class="service-label">Statutory Registrations</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">💰</div>
               <div class="service-label">Loan & Finance Facilitation</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">📊</div>
               <div class="service-label">Project reports & Investment Proposals</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-icon">⚖️</div>
               <div class="service-label">LLP Compliance Services</div>
-              <div class="service-cta">→</div>
+              <div class="service-cta" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
           </div>
         </section>
