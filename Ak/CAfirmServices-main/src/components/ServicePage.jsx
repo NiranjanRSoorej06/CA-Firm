@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header.jsx';
+import '../App.css';
+import '../index.css';
+import '../../../../src/Home.css';
+import Navbar from '../../../../src/components/Navbar.jsx';
 import Hero from './Hero.jsx';
 import Compliance from './Compliance.jsx';
 import Services from './Services.jsx';
@@ -27,7 +30,7 @@ const ServicePage = ({ serviceConfig, onServiceChange }) => {
 
   return (
     <div className="ServicePage relative">
-      <Header onServiceChange={onServiceChange} />
+      <Navbar />
       
       {/* Content container without transition animation */}
       <div>

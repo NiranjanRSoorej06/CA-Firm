@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import sbcLogo from '../assets/sbclogo.svg';
 import caLogo from '../assets/calogo.svg';
 
@@ -82,19 +83,19 @@ const Header = ({ onServiceChange }) => {
 
           {/* Navigation Menu - centered */}
           <div className="flex items-center gap-8">
-            <a 
-              href="#" 
+            <Link 
+              to="/" 
               className="text-gray-800 hover:text-gray-600 font-medium text-sm transition-colors"
             >
               Home
-            </a>
+            </Link>
             
-            <a 
-              href="#" 
+            <Link 
+              to="/about" 
               className="text-gray-800 hover:text-gray-600 font-medium text-sm transition-colors"
             >
               About
-            </a>
+            </Link>
             
             {/* Services with dropdown */}
             <div 
@@ -126,64 +127,73 @@ const Header = ({ onServiceChange }) => {
                 >
                   <div className="py-2">
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide px-4 py-2">Corporate Services</p>
-                    <button 
-                      onClick={() => handleServiceClick('roc')}
+                    <Link 
+                      to="/services/company-law-roc-compliance"
+                      onClick={() => setIsServicesOpen(false)}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                     >
                       Company Law & ROC Compliance
-                    </button>
-                    <button 
-                      onClick={() => handleServiceClick('registrations')}
+                    </Link>
+                    <Link 
+                      to="/services/statutory-registrations"
+                      onClick={() => setIsServicesOpen(false)}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                     >
                       Statutory Registrations
-                    </button>
-                    <button 
-                      onClick={() => handleServiceClick('loan')}
+                    </Link>
+                    <Link 
+                      to="/services/loan-finance-facilitation"
+                      onClick={() => setIsServicesOpen(false)}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                     >
                       Loan & Finance Facilitation
-                    </button>
-                    <button 
-                      onClick={() => handleServiceClick('llp')}
+                    </Link>
+                    <Link 
+                      to="/services/llp-compliance"
+                      onClick={() => setIsServicesOpen(false)}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                     >
                       LLP Compliance Services
-                    </button>
-                    <button 
-                      onClick={() => handleServiceClick('projectReports')}
+                    </Link>
+                    <Link 
+                      to="/services/project-reports-investment-proposals"
+                      onClick={() => setIsServicesOpen(false)}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                     >
                       Project Reports & Investment Proposals
-                    </button>
-                    <button 
-                      onClick={() => handleServiceClick('partnership')}
+                    </Link>
+                    <Link 
+                      to="/services/partnership-firm-compliance"
+                      onClick={() => setIsServicesOpen(false)}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                     >
                       Partnership Firm Compliance
-                    </button>
+                    </Link>
                   </div>
                   <div className="border-t border-gray-200">
                     <div className="py-2">
                       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide px-4 py-2">Tax Services</p>
-                      <button 
-                        onClick={() => handleServiceClick('incomeTax')}
+                      <Link 
+                        to="/services/income-tax"
+                        onClick={() => setIsServicesOpen(false)}
                         className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                       >
                         Income Tax
-                      </button>
-                      <button 
-                        onClick={() => handleServiceClick('tds')}
+                      </Link>
+                      <Link 
+                        to="/services/tds"
+                        onClick={() => setIsServicesOpen(false)}
                         className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                       >
                         TDS
-                      </button>
-                      <button 
-                        onClick={() => handleServiceClick('gst')}
+                      </Link>
+                      <Link 
+                        to="/services/gst"
+                        onClick={() => setIsServicesOpen(false)}
                         className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors"
                       >
                         GST
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
