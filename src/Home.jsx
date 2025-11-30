@@ -1,10 +1,11 @@
 import './Home.css';
 import { useState, useEffect, useRef } from 'preact/hooks';
+import { Link } from 'react-router-dom';
+import Navbar from './components/Navbar.jsx';
+import Footer from '../Ak/CAfirmServices-main/src/components/Footer.jsx';
 
 export function App() {
   const [expandedFaq, setExpandedFaq] = useState(null);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [servicesHoverTimeout, setServicesHoverTimeout] = useState(null);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -36,44 +37,6 @@ export function App() {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
 
-  const toggleServicesDropdown = (e) => {
-    e.stopPropagation();
-    setServicesDropdownOpen(!servicesDropdownOpen);
-  };
-
-  const openServicesDropdown = () => {
-    if (servicesHoverTimeout) {
-      clearTimeout(servicesHoverTimeout);
-    }
-    setServicesDropdownOpen(true);
-  };
-
-  const closeServicesDropdown = () => {
-    if (servicesHoverTimeout) {
-      clearTimeout(servicesHoverTimeout);
-    }
-    const timeout = setTimeout(() => {
-      setServicesDropdownOpen(false);
-    }, 400); // 400ms delay before closing
-    setServicesHoverTimeout(timeout);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = () => {
-      if (servicesDropdownOpen) {
-        setServicesDropdownOpen(false);
-      }
-    };
-
-    if (servicesDropdownOpen) {
-      document.addEventListener('click', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [servicesDropdownOpen]);
-
   const faqs = [
     {
       question: "What services do you offer?",
@@ -94,46 +57,7 @@ export function App() {
   ];
   return (
     <>
-      {/* Fixed Navbar */}
-      <nav class="fixed-navbar">
-        <div class="navbar-content">
-          <div class="navbar-logos">
-            <img src="/src/assets/logo-1.svg" alt="Logo 1" class="navbar-logo ca-logo" />
-            <div class="sbcpl-logo-group">
-              <img src="/src/assets/logo-2.svg" alt="SBCPL" class="navbar-logo sbcpl-logo" />
-              <div class="sbcpl-texts">
-                <span class="sbcpl-main">SBCPL</span>
-              </div>
-            </div>
-          </div>
-          <ul class="navbar-links">
-            <li>Home</li>
-            <li>About</li>
-            <li class="navbar-dropdown" onMouseEnter={openServicesDropdown} onMouseLeave={closeServicesDropdown}>
-              Services <span class="navbar-caret" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
-                  <path d="M6 9l6 6 6-6" stroke="#233c74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-              {servicesDropdownOpen && (
-                <div class="navbar-dropdown-menu" onMouseEnter={openServicesDropdown} onMouseLeave={closeServicesDropdown}>
-                  <a href="#services">Income Tax</a>
-                  <a href="#services">GST</a>
-                  <a href="#services">TDS</a>
-                  <a href="#services">Partnership Firm Compliance</a>
-                  <a href="#services">Company Law & ROC Compliance</a>
-                  <a href="#services">Statutory Registrations</a>
-                  <a href="#services">Loan & Finance Facilitation</a>
-                  <a href="#services">Project reports & Investment Proposals</a>
-                  <a href="#services">LLP Compliance Services</a>
-                </div>
-              )}
-            </li>
-            <li>Contact</li>
-          </ul>
-          <button class="navbar-cta">Get Started</button>
-        </div>
-      </nav>
+      <Navbar />
       <div class="homepage">
         {/* Hero Section */}
         <section class="hero">
@@ -186,29 +110,29 @@ export function App() {
           <button class="founders-btn scroll-animate">
             Explore More <span class="about-btn-icon">&#8594;</span>
           </button>
-          <div class="founders-list">
-            <div class="founder-card">
-              <div class="founder-img-card">
-                <img class="founder-img" src="/src/assets/Mask group.svg" alt="Anand Krishna" />
+            <div class="founders-list">
+              <div class="founder-item">
+                <div class="founder-img-card">
+                  <img class="founder-img" src="/src/assets/Mask group.svg" alt="Anand Krishna" />
+                </div>
+                <div class="founder-label-name">Anand Krishna</div>
+                <div class="founder-label-role">Co-Founder</div>
               </div>
-              <div class="founder-label-name">Anand Krishna</div>
-              <div class="founder-label-role">Co-Founder</div>
-            </div>
-            <div class="founder-card">
-              <div class="founder-img-card">
-                <img class="founder-img" src="/src/assets/Mask group.svg" alt="Rahul Singh" />
+              <div class="founder-item">
+                <div class="founder-img-card">
+                  <img class="founder-img" src="/src/assets/Mask group.svg" alt="Rahul Singh" />
+                </div>
+                <div class="founder-label-name">Rahul Singh</div>
+                <div class="founder-label-role">Founder</div>
               </div>
-              <div class="founder-label-name">Rahul Singh</div>
-              <div class="founder-label-role">Founder</div>
-            </div>
-            <div class="founder-card">
-              <div class="founder-img-card">
-                <img class="founder-img" src="/src/assets/Mask group.svg" alt="Ajeet Agarwal" />
+              <div class="founder-item">
+                <div class="founder-img-card">
+                  <img class="founder-img" src="/src/assets/Mask group.svg" alt="Ajeet Agarwal" />
+                </div>
+                <div class="founder-label-name">Ajeet Agarwal</div>
+                <div class="founder-label-role">Executive Manager</div>
               </div>
-              <div class="founder-label-name">Ajeet Agarwal</div>
-              <div class="founder-label-role">Executive Manager</div>
             </div>
-          </div>
         </section>
 
         {/* Services */}
@@ -218,7 +142,7 @@ export function App() {
             The Core Team represents our deep-rooted values and wide spectrum of capabilities. We make a consistent and conscious effort to gauge the magnitude of future business hurdles and develop appropriate solutions. Our resolute will, flexible approach and clinical precision has the power to resolve the toughest of financial problems of your business.
           </div>
           <div class="services-list">
-            <div class="service-card">
+            <Link to="/services/income-tax" class="service-card">
               <div class="service-icon">📄</div>
               <div class="service-label">Income Tax</div>
               <div class="service-cta" aria-hidden="true">
@@ -226,8 +150,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/gst" class="service-card">
               <div class="service-icon">🧾</div>
               <div class="service-label">GST</div>
               <div class="service-cta" aria-hidden="true">
@@ -235,8 +159,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/tds" class="service-card">
               <div class="service-icon">🛡️</div>
               <div class="service-label">TDS</div>
               <div class="service-cta" aria-hidden="true">
@@ -244,8 +168,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/partnership-firm-compliance" class="service-card">
               <div class="service-icon">🏢</div>
               <div class="service-label">Partnership Firm Compliance</div>
               <div class="service-cta" aria-hidden="true">
@@ -253,8 +177,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/company-law-roc-compliance" class="service-card">
               <div class="service-icon">🏛️</div>
               <div class="service-label">Company Law & ROC Compliance</div>
               <div class="service-cta" aria-hidden="true">
@@ -262,8 +186,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/statutory-registrations" class="service-card">
               <div class="service-icon">📝</div>
               <div class="service-label">Statutory Registrations</div>
               <div class="service-cta" aria-hidden="true">
@@ -271,8 +195,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/loan-finance-facilitation" class="service-card">
               <div class="service-icon">💰</div>
               <div class="service-label">Loan & Finance Facilitation</div>
               <div class="service-cta" aria-hidden="true">
@@ -280,8 +204,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/project-reports-investment-proposals" class="service-card">
               <div class="service-icon">📊</div>
               <div class="service-label">Project reports & Investment Proposals</div>
               <div class="service-cta" aria-hidden="true">
@@ -289,8 +213,8 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
-            <div class="service-card">
+            </Link>
+            <Link to="/services/llp-compliance" class="service-card">
               <div class="service-icon">⚖️</div>
               <div class="service-label">LLP Compliance Services</div>
               <div class="service-cta" aria-hidden="true">
@@ -298,7 +222,7 @@ export function App() {
                   <path d="M8 5l8 7-8 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -421,33 +345,7 @@ export function App() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer class="footer">
-          <div class="footer-content">
-            <div class="footer-links">
-              <div>
-                <h5>Site Map</h5>
-                <ul>
-                  <li>Home</li>
-                  <li>Services</li>
-                  <li>Contact</li>
-                  <li>About Us</li>
-                  <li>FAQs</li>
-                </ul>
-              </div>
-              <div>
-                <h5>Legal</h5>
-                <ul>
-                  <li>Privacy Policy</li>
-                  <li>Services</li>
-                </ul>
-              </div>
-            </div>
-            <div class="footer-social">
-              <span>© 2025 All Rights Reserved</span>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
 
     </>

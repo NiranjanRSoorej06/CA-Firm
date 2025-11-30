@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./AboutUsPage.jsx",
-    "./App.jsx"
+    "./Ash/LawFirmWebApp/**/*.{js,ts,jsx,tsx}",
+    "./Ak/CAfirmServices-main/src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {

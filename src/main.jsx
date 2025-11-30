@@ -1,4 +1,5 @@
 import { render } from 'preact'
-import { App as Home } from './Home.jsx';
+import './index.css'
+import AppRouter from './App.jsx';
 
-render(<Home />, document.getElementById('app'))
+render(<AppRouter />, document.getElementById('app'))
