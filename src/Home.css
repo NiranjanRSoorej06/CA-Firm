@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap');
+
 /* --- Contact Section v2 --- */
 .contact-section {
   width: 100vw;
@@ -8,14 +10,30 @@
 }
 .contact-bg {
   background: #233c74;
-  background-image: url('/contact-bg-lines.png'); /* optional: for white lines effect */
-  background-size: cover;
-  background-position: center;
+  /* Network Globe as decorative backgrounds for the Get In Touch section (left + right) */
+  background-image: url('/src/assets/Network%20Globe.svg'), url('/src/assets/Network%20Globe.svg');
+  background-repeat: no-repeat, no-repeat;
+  /* place one decorative globe slightly offset to the top-left and the other at bottom-right */
+  background-position: -8% -32%, right 120%;
+  /* slightly increase the left (first) globe size */
+  background-size: 34%, 38%;
+  /* fallback subtle pattern (optional) */
+  /* background-image: url('/contact-bg-lines.png'); */
   padding: 32px 0 32px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+}
+
+/* Hide or reduce decorative globes on small screens */
+@media (max-width: 900px) {
+  .contact-bg {
+    /* collapse to a single, subtle globe at bottom-right on smaller screens */
+    background-image: url('/src/assets/Network%20Globe.svg');
+    background-position: right bottom;
+    background-size: 30%;
+  }
 }
 .contact-header {
   text-align: center;
@@ -236,74 +254,70 @@
   margin-top: 0;
   flex-wrap: wrap;
 }
-.founder-card {
-  background: #fff;
-  border-radius: 1.3em;
-  box-shadow: 0 16px 40px 0 rgba(10,23,78,0.13);
-  padding: 0 0 0.5em 0;
+.founder-card,
+.founder-item {
+  background: transparent; /* remove tile background */
+  border-radius: 0; /* remove rounded tile corners */
+  box-shadow: none; /* remove tile shadow */
+  padding: 0;
   width: 260px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   margin-bottom: 1.5em;
-  transition: box-shadow 0.3s, transform 0.3s;
+  transition: transform 0.3s; /* keep transform but remove shadow transition */
   cursor: pointer;
   position: relative;
   transform-style: preserve-3d;
+  overflow: hidden; /* ensure image fills without leaking */
 }
 .founder-card:hover {
-  box-shadow: 0 24px 48px 0 rgba(10,23,78,0.18);
-  transform: rotateY(5deg) rotateX(2deg) translateY(-8px);
+  /* subtle lift on hover without a shadowed tile */
+  transform: translateY(-6px);
 }
 .founder-img-card {
   position: relative;
   width: 100%;
   height: 220px;
-  background: #fff;
-  border-radius: 18px;
+  background: transparent;
+  border-radius: 0; /* remove rounded corners so image aligns with page */
   box-shadow: none;
   overflow: hidden;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   margin-bottom: 0;
 }
 .founder-img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 18px;
+  height: 260px; /* fixed display height for full-bleed appearance */
+  object-fit: cover; /* fill the card */
+  border-radius: 0; /* image takes top corners from container */
   background: #fff;
   display: block;
   margin: 0;
   padding: 0;
 }
-.founder-info {
-  background: #fff;
-  border-radius: 0 0 1em 1em;
-  width: 100%;
-  margin-top: 0;
-  box-shadow: 0 8px 32px 0 rgba(10,23,78,0.10);
-  padding: 1.1em 0.5em 0.9em 0.5em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-.founder-name {
-  font-size: 1.25em;
-  font-weight: 600;
+/* Captions placed below the image inside the card */
+.founder-label-name {
+  font-size: 1.15em;
+  font-weight: 700;
   color: #000 !important;
-  margin-bottom: 0.2em;
+  margin: 0; /* place name directly below the image */
   text-align: center;
 }
-.founder-role {
-  font-size: 1.08em;
-  color: #888;
+.founder-label-role {
+  font-size: 1.02em;
+  color: #666;
   font-weight: 500;
+  margin: 0; /* place role immediately under the name */
   text-align: center;
+}
+
+/* Ensure card body (captions area) has comfortable padding */
+.founder-card > .founder-label-name,
+.founder-card > .founder-label-role {
+  display: block;
+  width: 100%;
 }
 /* Fixed Navbar */
 .fixed-navbar {
@@ -385,6 +399,10 @@
   font-weight: 500;
   transition: color 0.2s;
   padding: 0 0.2em;
+}
+.navbar-links li a {
+  color: inherit;
+  text-decoration: none;
 }
 .navbar-links li:hover {
   color: #0a174e;
@@ -566,10 +584,12 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(180deg, #0a174e 60%, #f7f8fa 100%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #1E3A8A 100%), url('/src/assets/tax.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: normal;
   color: #fff;
-  min-height: 700px;
-  padding-bottom: 180px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -582,11 +602,7 @@ body {
   right: 0;
   bottom: 0;
   top: 0;
-  background: url('/src/assets/Group 72.svg') no-repeat center bottom;
-  background-size: 100% auto;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  opacity: 1;
+  background: transparent;
   pointer-events: none;
   z-index: 0;
 }
@@ -610,6 +626,8 @@ body {
   font-weight: 700;
   margin-bottom: 1rem;
   animation: blurFadeIn 1.2s ease-out;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
 }
 @keyframes blurFadeIn {
   0% {
@@ -631,6 +649,8 @@ body {
   font-size: 1.2rem;
   margin-bottom: 2rem;
   animation: blurFadeIn 1.2s ease-out 0.3s backwards;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: #e5e7eb;
 }
 .primary-btn {
   background: #ffc300;
@@ -765,19 +785,22 @@ body {
   color: #ffc300;
 }
 .mv-card p {
-  font-size: 1.13rem;
-  font-weight: 400;
+  font-size: 1.15rem;
+  font-weight: 500;
   color: #fff;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.7;
   text-align: center;
+  /* Use Playfair Display for a refined serif look */
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.01em;
 }
 .founder-card {
   background: #fff;
   border-radius: 1em;
   box-shadow: 0 2px 12px rgba(10,23,78,0.08);
-  padding: 1.5em 1em;
-  width: 180px;
+  padding: 0; /* remove inner padding so image can be full-bleed */
+  width: 320px; /* increased width for larger images */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -785,22 +808,20 @@ body {
 .founder-img-card {
   position: relative;
   width: 100%;
-  height: 220px;
-  background: #fff;
-  border-radius: 18px;
+  height: 320px; /* increased height for larger images */
+  background: transparent;
+  border-radius: 0;
   box-shadow: none;
   overflow: hidden;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   margin-bottom: 0;
 }
 .founder-img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 18px;
+  height: 320px; /* larger fixed display height */
+  object-fit: cover; /* cover to fill tile */
+  border-radius: 0;
   background: #fff;
   display: block;
   margin: 0;
@@ -865,6 +886,11 @@ body {
   position: relative;
   overflow: visible; /* allow icon to display fully outside card */
   cursor: pointer;
+  text-decoration: none;
+}
+a.service-card {
+  text-decoration: none;
+  color: inherit;
 }
 .service-card:hover {
   box-shadow: 0 16px 48px 0 rgba(10,23,78,0.18);
@@ -1088,6 +1114,9 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
+  }
+  .founder-img {
+    height: 200px; /* smaller images on small screens */
   }
   .services-list {
     grid-template-columns: 1fr;

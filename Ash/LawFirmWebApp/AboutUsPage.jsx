@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { Menu, X, ArrowRight, Calendar, Users, TrendingUp, Award, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useInView } from "framer-motion";
+import { Link } from 'react-router-dom';
+import './index.css';
+import '../../src/Home.css';
+import Navbar from '../../src/components/Navbar.jsx';
+import Footer from '../../Ak/CAfirmServices-main/src/components/Footer.jsx';
 
 const TimelineEntry = ({ year, title, description, isLeft, index }) => {
   const ref = useRef(null);
@@ -69,8 +74,6 @@ const TimelineEntry = ({ year, title, description, isLeft, index }) => {
 };
 
 const AboutUsPage = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroRef = useRef(null);
   const observerRef = useRef(null);
   const lineRef = useRef(null);
@@ -195,116 +198,14 @@ const AboutUsPage = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden relative">
-      {/* Updated Navigation Bar - Centralized, Thinner, Green SBCPL */}
-      <header className="absolute top-0 left-0 right-0 z-50 pt-6">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="bg-white rounded-full shadow-lg px-6 py-3 flex items-center justify-between max-w-5xl mx-auto border border-gray-100">
-            {/* Logo Section - Compact */}
-            <div className="flex items-center gap-3">
-              {/* CA INDIA Logo */}
-              <div className="flex items-center">
-                <img 
-                  src="/CA.png" 
-                  alt="CA India" 
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
-              
-              {/* SBC Logo with text */}
-              <div className="flex items-center gap-2">
-                <img 
-                  src="/logo.png" 
-                  alt="SBC Logo" 
-                  className="h-10 w-auto object-contain"
-                />
-                <div className="text-xl font-bold text-green-600 tracking-wide">
-                  SBCPL
-                </div>
-              </div>
-            </div>
-            
-            {/* Navigation Links - Centered */}
-            <div className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
-              <a 
-                href="#home" 
-                className="text-gray-800 font-medium text-base hover:text-blue-900 transition-colors duration-300"
-              >
-                Home
-              </a>
-              <a 
-                href="#about" 
-                className="text-gray-800 font-medium text-base hover:text-blue-900 transition-colors duration-300"
-              >
-                About
-              </a>
-              <div className="relative group">
-                <button className="flex items-center text-gray-800 font-medium text-base hover:text-blue-900 transition-colors duration-300">
-                  Services 
-                  <ChevronDown size={16} className="ml-1" />
-                </button>
-                <div className="absolute hidden group-hover:block bg-white shadow-xl rounded-xl mt-2 py-3 w-44 border border-gray-100 left-1/2 transform -translate-x-1/2">
-                  <a href="#" className="block px-5 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition-colors">TDS Services</a>
-                  <a href="#" className="block px-5 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition-colors">GST Services</a>
-                  <a href="#" className="block px-5 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition-colors">Audit Services</a>
-                </div>
-              </div>
-              <a 
-                href="#contact" 
-                className="text-gray-800 font-medium text-base hover:text-blue-900 transition-colors duration-300"
-              >
-                Contact
-              </a>
-            </div>
-
-            {/* CTA Button - Compact */}
-            <div className="hidden lg:block">
-              <button 
-                className="bg-blue-900 text-white px-6 py-2.5 rounded-full hover:bg-blue-800 transition-all duration-300 text-base font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-              >
-                Get Started
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </nav>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden mt-4 bg-white rounded-2xl shadow-lg p-5 max-w-5xl mx-auto border border-gray-100">
-              <div className="flex flex-col space-y-3">
-                {['Home', 'About', 'Services', 'Contact'].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-800 hover:text-blue-900 font-medium text-base py-2 transition-colors duration-300"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item}
-                  </a>
-                ))}
-                <button 
-                  className="bg-blue-900 text-white px-6 py-2.5 rounded-full font-semibold text-base w-fit mt-3 hover:bg-blue-800 transition-colors duration-300"
-                >
-                  Get Started
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section - Updated with aboutus.png */}
       <section 
         id="home" 
         className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/aboutus.png')`
+          backgroundImage: `linear-gradient(to bottom, #00000000 0%, #1E3A8A 100%), url('/aboutus.png')`
         }}
       >
         <div 
@@ -867,70 +768,7 @@ const AboutUsPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-blue-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="flex items-center gap-2">
-                  <img 
-                    src="/CA.png" 
-                    alt="CA India" 
-                    className="h-8 w-auto object-contain"
-                  />
-                  <img 
-                    src="/logo.png" 
-                    alt="SBC Logo" 
-                    className="h-8 w-auto object-contain"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold">SBCPL</h3>
-              </div>
-              <p className="text-blue-200 leading-relaxed mb-6">
-                Your trusted consulting partner delivering exceptional business solutions 
-                and strategic guidance for sustainable growth and success.
-              </p>
-            </div>
-
-            {/* Site Map */}
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Site Map</h4>
-              <ul className="space-y-2 text-blue-200">
-                <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Legal</h4>
-              <ul className="space-y-2 text-blue-200">
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-blue-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-blue-200 text-sm">© 2025 SBCPL. All rights reserved.</p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              {['LinkedIn', 'Twitter', 'Facebook'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-                >
-                  <span className="text-sm font-bold">{social[0]}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <style jsx>{`
         .animate-on-scroll {
