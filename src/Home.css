@@ -577,6 +577,26 @@ body {
   transform: translateY(0);
 }
 
+/* Light card entrance for founders with a subtle stagger */
+.founders-list .founder-card.scroll-animate {
+  opacity: 0;
+  /* start lower and slightly smaller so the card visibly pops up */
+  transform: translateY(36px) scale(0.96);
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  transition: opacity 0.75s cubic-bezier(.2,.9,.2,1), transform 0.75s cubic-bezier(.2,.9,.2,1), box-shadow 0.35s ease;
+}
+.founders-list .founder-card.scroll-animate.visible {
+  opacity: 1;
+  /* pop slightly above final position and scale up for a subtle "pop" effect */
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 26px 56px rgba(10,23,78,0.14);
+}
+/* Stagger the cards so they appear one after another (snappier) */
+.founders-list .founder-card:nth-child(1).scroll-animate { transition-delay: 0s; }
+.founders-list .founder-card:nth-child(2).scroll-animate { transition-delay: 0.06s; }
+.founders-list .founder-card:nth-child(3).scroll-animate { transition-delay: 0.12s; }
+
 .homepage {
   width: 100%;
   margin: 0;
@@ -621,15 +641,39 @@ body {
 }
 .hero-content {
   text-align: center;
-  max-width: 600px;
+  max-width: 900px; /* increased so subheading can fit in one line */
 }
+/* Keep the subheading on a single line where possible */
+.hero-sub h2 {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* On very small screens allow wrapping and reduce size so layout remains usable */
+@media (max-width: 480px) {
+  .hero-sub h2 {
+    white-space: normal;
+    font-size: 1.25rem !important;
+    color: #ffc300;
+  }
+}
+
+/* Hero subheading color (match About page yellow) */
+.hero-sub h2 {
+  color: #ffc300;
+}
+/* Hero heading: keep visual styles but allow Tailwind utilities to control size */
 .hero-content h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 1rem;
-  animation: blurFadeIn 1.2s ease-out;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  /* blur fade removed - using pop animation via .scroll-animate */
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 3px 6px rgba(0, 0, 0, 0.22);
   color: #fff;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 @keyframes blurFadeIn {
   0% {
@@ -648,11 +692,49 @@ body {
   }
 }
 .hero-content p {
-  font-size: 1.2rem;
   margin-bottom: 2rem;
-  animation: blurFadeIn 1.2s ease-out 0.3s backwards;
+  /* blur fade removed - using pop animation via .scroll-animate */
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   color: #e5e7eb;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  line-height: 1.25;
+}
+/* Pop-from-down scroll animation for hero heading and subheading */
+.hero-content h1.scroll-animate,
+.hero-sub .scroll-animate {
+  opacity: 0;
+  transform: translateY(36px) scale(0.98);
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  transition: opacity 1.5s cubic-bezier(.2,.9,.2,1), transform 1.5s cubic-bezier(.2,.9,.2,1);
+}
+.hero-content h1.scroll-animate.visible,
+.hero-sub .scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Add staggered delays to slow and sequence the hero entrance */
+.hero-content h1.scroll-animate { transition-delay: 0.30s; }
+.hero-sub h2.scroll-animate { transition-delay: 0.65s; }
+.hero-sub p.scroll-animate { transition-delay: 0.95s; }
+
+/* Increase SBCPL main heading size by 3px across breakpoints */
+.hero-content h1.scroll-animate {
+  font-size: calc(4.5rem + 3px) !important; /* base (text-7xl +3px) */
+}
+@media (min-width: 768px) {
+  .hero-content h1.scroll-animate {
+    font-size: calc(6rem + 3px) !important; /* md (text-8xl +3px) */
+  }
+}
+@media (min-width: 1024px) {
+  .hero-content h1.scroll-animate {
+    font-size: calc(8rem + 3px) !important; /* lg (text-9xl +3px) */
+  }
 }
 .primary-btn {
   background: #ffc300;
