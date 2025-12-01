@@ -94,18 +94,45 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-700/50 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-base">
           <p className="text-gray-400">&copy; Copyright 2023. All Rights Reserved | <span className="text-cyan-400 font-semibold">SBCPL</span></p>
-          <div className="flex space-x-5 mt-6 sm:mt-0">
-            <a href="#" className="w-10 h-10 rounded-full bg-gray-800/50 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-              <i className="fab fa-google text-base"></i>
+          <div className="flex items-center space-x-6 mt-6 sm:mt-0">
+            {/* Icon-only contact buttons with accessible labels */}
+            <a
+              href="#"
+              aria-label="Instagram"
+              title="Instagram (replace link)"
+              className="w-12 h-12 rounded-full bg-gray-800/30 flex items-center justify-center transition-all duration-300 hover:bg-cyan-500 transform hover:scale-110"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M16 11.37a4 4 0 1 1-7.999.001A4 4 0 0 1 16 11.37z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M17.5 6.5h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="sr-only">Instagram</span>
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-gray-800/50 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-              <i className="fab fa-linkedin-in text-base"></i>
+
+            <a
+              href="mailto:hello@example.com"
+              aria-label="Email"
+              title="Send email"
+              className="w-12 h-12 rounded-full bg-gray-800/30 flex items-center justify-center transition-all duration-300 hover:bg-cyan-500 transform hover:scale-110"
+            >
+              <svg width="18" height="14" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 3.5h20v11H2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M22 3.5l-10 7-10-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="sr-only">Email</span>
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-gray-800/50 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-              <i className="fab fa-instagram text-base"></i>
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-gray-800/50 hover:bg-cyan-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110">
-              <i className="fab fa-facebook-f text-base"></i>
+
+            <a
+              href="tel:+911234567890"
+              aria-label="Phone"
+              title="Call us"
+              className="w-12 h-12 rounded-full bg-gray-800/30 flex items-center justify-center transition-all duration-300 hover:bg-cyan-500 transform hover:scale-110"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.08.75 3.05a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.03-1.03a2 2 0 0 1 2.11-.45c.97.37 2 .63 3.05.75A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="sr-only">Phone</span>
             </a>
           </div>
         </div>
