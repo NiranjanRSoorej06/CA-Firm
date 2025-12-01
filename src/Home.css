@@ -606,10 +606,11 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #1E3A8A 100%), url('/src/assets/tax.jpg');
+  /* Removed blue overlay gradient so the background image displays without the blue tint */
+  background-image: url('/src/assets/tax.jpg');
+  background-color: #00144E; /* fallback color */
   background-size: cover;
   background-position: center;
-  background-blend-mode: normal;
   color: #fff;
   min-height: 100vh;
   display: flex;
@@ -850,13 +851,14 @@ body {
   z-index: 1;
 }
 .mv-card {
-  background: linear-gradient(135deg, #0a174e 80%, #2346a0 100%);
-  color: #fff;
+  /* Replaced blue gradient with a neutral card background */
+  background: #f7f8fa;
+  color: #233c74;
   border-radius: 28px;
   padding: 2em 1.2em 2em 1.2em;
   max-width: 320px;
   min-width: 220px;
-  box-shadow: 0 8px 32px 0 rgba(10,23,78,0.13), 0 2px 16px 0 rgba(10,23,78,0.08);
+  box-shadow: 0 8px 32px 0 rgba(10,23,78,0.08), 0 2px 16px 0 rgba(10,23,78,0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -866,12 +868,13 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.1em;
-  color: #ffc300;
+  color: #233c74;
 }
 .mv-card p {
   font-size: 1.15rem;
   font-weight: 500;
-  color: #fff;
+  /* Darker text for improved contrast on the light card background */
+  color: #475569;
   margin: 0;
   line-height: 1.7;
   text-align: center;

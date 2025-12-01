@@ -146,19 +146,7 @@ const Services = ({ servicesData }) => {
                     {service.description}
                   </p>
                 </div>
-                <div className="flex justify-end mt-4">
-                  <button 
-                    className="rounded-full h-8 w-8 flex items-center justify-center transition-all duration-300 hover:bg-blue-600 hover:scale-110 group-hover:border-blue-600" 
-                    style={{
-                      border: '2px solid #00144E',
-                      backgroundColor: 'transparent'
-                    }}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-all duration-300 group-hover:translate-x-1">
-                      <path d="M8 3L13 8L8 13M13 8H3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#00144E] group-hover:text-white"/>
-                    </svg>
-                  </button>
-                </div>
+                <div className="mt-4" />
               </div>
             ))}
           </div>

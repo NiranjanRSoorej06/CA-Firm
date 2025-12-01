@@ -205,7 +205,8 @@ const AboutUsPage = () => {
         id="home" 
         className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(to bottom, #00000000 0%, #1E3A8A 100%), url('/aboutus.png')`
+          /* Removed blue overlay gradient so the about hero image displays without tint */
+          backgroundImage: `url('/aboutus.png')`
         }}
       >
         <div 
