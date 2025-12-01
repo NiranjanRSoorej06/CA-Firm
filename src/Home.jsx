@@ -63,8 +63,13 @@ export function App() {
         <section class="hero">
           <div class="hero-overlay">
             <div class="hero-content">
-              <h1>Excellence in Auditing and Assurance</h1>
-              <p>Corporate & Professional Business Solutions with Integrity & Performance</p>
+              <h1 class="text-7xl md:text-8xl lg:text-9xl font-extrabold mb-6 tracking-tight text-yellow-400 scroll-animate">SBCPL</h1>
+
+              <div class="hero-sub">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 scroll-animate">Excellence in Auditing and Assurance</h2>
+                <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto leading-relaxed scroll-animate">Corporate & Professional Business Solutions with Integrity & Performance</p>
+              </div>
+
               <button class="primary-btn">Get Started Now</button>
             </div>
           </div>
@@ -111,21 +116,21 @@ export function App() {
             Explore More <span class="about-btn-icon">&#8594;</span>
           </button>
             <div class="founders-list">
-              <div class="founder-card">
+              <div class="founder-card scroll-animate">
                 <div class="founder-img-card" style={{backgroundImage: "url('/src/assets/cropped.svg')"}}></div>
                 <div class="founder-info">
                   <h3 class="founder-name">Anand Krishna</h3>
                   <p class="founder-role">Co-Founder</p>
                 </div>
               </div>
-              <div class="founder-card">
+              <div class="founder-card scroll-animate">
                 <div class="founder-img-card" style={{backgroundImage: "url('/src/assets/cropped.svg')"}}></div>
                 <div class="founder-info">
                   <h3 class="founder-name">Rahul Singh</h3>
                   <p class="founder-role">Founder</p>
                 </div>
               </div>
-              <div class="founder-card">
+              <div class="founder-card scroll-animate">
                 <div class="founder-img-card" style={{backgroundImage: "url('/src/assets/cropped.svg')"}}></div>
                 <div class="founder-info">
                   <h3 class="founder-name">Ajeet Agarwal</h3>
