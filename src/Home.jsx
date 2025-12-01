@@ -111,26 +111,26 @@ export function App() {
             Explore More <span class="about-btn-icon">&#8594;</span>
           </button>
             <div class="founders-list">
-              <div class="founder-item">
-                <div class="founder-img-card">
-                  <img class="founder-img" src="/src/assets/Mask group.svg" alt="Anand Krishna" />
+              <div class="founder-card">
+                <div class="founder-img-card" style={{backgroundImage: "url('/src/assets/cropped.svg')"}}></div>
+                <div class="founder-info">
+                  <h3 class="founder-name">Anand Krishna</h3>
+                  <p class="founder-role">Co-Founder</p>
                 </div>
-                <div class="founder-label-name">Anand Krishna</div>
-                <div class="founder-label-role">Co-Founder</div>
               </div>
-              <div class="founder-item">
-                <div class="founder-img-card">
-                  <img class="founder-img" src="/src/assets/Mask group.svg" alt="Rahul Singh" />
+              <div class="founder-card">
+                <div class="founder-img-card" style={{backgroundImage: "url('/src/assets/cropped.svg')"}}></div>
+                <div class="founder-info">
+                  <h3 class="founder-name">Rahul Singh</h3>
+                  <p class="founder-role">Founder</p>
                 </div>
-                <div class="founder-label-name">Rahul Singh</div>
-                <div class="founder-label-role">Founder</div>
               </div>
-              <div class="founder-item">
-                <div class="founder-img-card">
-                  <img class="founder-img" src="/src/assets/Mask group.svg" alt="Ajeet Agarwal" />
+              <div class="founder-card">
+                <div class="founder-img-card" style={{backgroundImage: "url('/src/assets/cropped.svg')"}}></div>
+                <div class="founder-info">
+                  <h3 class="founder-name">Ajeet Agarwal</h3>
+                  <p class="founder-role">Executive Manager</p>
                 </div>
-                <div class="founder-label-name">Ajeet Agarwal</div>
-                <div class="founder-label-role">Executive Manager</div>
               </div>
             </div>
         </section>
