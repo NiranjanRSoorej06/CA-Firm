@@ -59,7 +59,11 @@ const Navbar = () => {
           </div>
         </div>
         <ul class="navbar-links">
-          <li><Link to="/">Home</Link></li>
+          <li>
+            <Link to="/" onClick={(e) => { if (typeof window !== 'undefined' && window.location.pathname === '/') { e.preventDefault(); window.location.reload(); } }}>
+              Home
+            </Link>
+          </li>
           <li><Link to="/about">About</Link></li>
           <li>
             <Link to="/pan" onClick={() => { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} }}>
