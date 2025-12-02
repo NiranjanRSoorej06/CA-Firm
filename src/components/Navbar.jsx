@@ -23,6 +23,13 @@ const Navbar = () => {
     setServicesHoverTimeout(timeout);
   };
 
+  const closeServicesDropdownImmediate = () => {
+    if (servicesHoverTimeout) {
+      clearTimeout(servicesHoverTimeout);
+    }
+    setServicesDropdownOpen(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -67,15 +74,15 @@ const Navbar = () => {
             </span>
             {servicesDropdownOpen && (
               <div class="navbar-dropdown-menu" onMouseEnter={openServicesDropdown} onMouseLeave={closeServicesDropdown}>
-                <Link to="/services/income-tax">Income Tax</Link>
-                <Link to="/services/gst">GST</Link>
-                <Link to="/services/tds">TDS</Link>
-                <Link to="/services/partnership-firm-compliance">Partnership Firm Compliance</Link>
-                <Link to="/services/company-law-roc-compliance">Company Law & ROC Compliance</Link>
-                <Link to="/services/statutory-registrations">Statutory Registrations</Link>
-                <Link to="/services/loan-finance-facilitation">Loan & Finance Facilitation</Link>
-                <Link to="/services/project-reports-investment-proposals">Project reports & Investment Proposals</Link>
-                <Link to="/services/llp-compliance">LLP Compliance Services</Link>
+                <Link to="/services/income-tax" onClick={closeServicesDropdownImmediate}>Income Tax</Link>
+                <Link to="/services/gst" onClick={closeServicesDropdownImmediate}>GST</Link>
+                <Link to="/services/tds" onClick={closeServicesDropdownImmediate}>TDS</Link>
+                <Link to="/services/partnership-firm-compliance" onClick={closeServicesDropdownImmediate}>Partnership Firm Compliance</Link>
+                <Link to="/services/company-law-roc-compliance" onClick={closeServicesDropdownImmediate}>Company Law & ROC Compliance</Link>
+                <Link to="/services/statutory-registrations" onClick={closeServicesDropdownImmediate}>Statutory Registrations</Link>
+                <Link to="/services/loan-finance-facilitation" onClick={closeServicesDropdownImmediate}>Loan & Finance Facilitation</Link>
+                <Link to="/services/project-reports-investment-proposals" onClick={closeServicesDropdownImmediate}>Project reports & Investment Proposals</Link>
+                <Link to="/services/llp-compliance" onClick={closeServicesDropdownImmediate}>LLP Compliance Services</Link>
               </div>
             )}
           </li>

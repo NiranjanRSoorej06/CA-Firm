@@ -13,9 +13,9 @@
   /* Decorative network globe for the Get In Touch section (right side only) */
   background-image: url('/src/assets/Network%20Globe.svg');
   background-repeat: no-repeat;
-  /* place the decorative globe at the right (subtle, slightly below center) */
-  background-position: right 120%;
-  background-size: 38%;
+  background: #fff;
+  /* remove top padding so About Us sits directly under the hero */
+  padding: 0 0 56px 0;
   /* fallback subtle pattern (optional) */
   /* background-image: url('/contact-bg-lines.png'); */
   padding: 32px 0 32px 0;
@@ -566,6 +566,11 @@ body {
   color: #222;
 }
 
+/* Prevent horizontal page scrolling caused by wide marquee tracks */
+html, body {
+  overflow-x: hidden;
+}
+
 /* Scroll animation utility classes */
 .scroll-animate {
   opacity: 0;
@@ -638,7 +643,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 70px 0 40px 0;
+  /* remove bottom padding so hero background meets next section */
+  padding: 70px 0 0 0;
 }
 .hero-content {
   text-align: center;
@@ -711,6 +717,8 @@ body {
   transform-origin: center bottom;
   will-change: transform, opacity;
   transition: opacity 1.5s cubic-bezier(.2,.9,.2,1), transform 1.5s cubic-bezier(.2,.9,.2,1);
+  /* small spacing so main heading doesn't sit behind fixed navbar */
+  margin-top: 24px;
 }
 .hero-content h1.scroll-animate.visible,
 .hero-sub .scroll-animate.visible {
@@ -747,6 +755,7 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+  margin-bottom: 0; /* remove extra gap so marquee can sit flush with About section */
 }
 .primary-btn:hover {
   background: #ffb000;
@@ -758,7 +767,8 @@ body {
   background: #fff;
   color: #233c74;
   text-align: center;
-  padding: 56px 0 56px 0;
+  /* collapse top padding so marquee can meet About Us with zero gap */
+  padding: 0 0 56px 0;
   box-sizing: border-box;
 }
 .about-title {
@@ -1252,4 +1262,111 @@ a.service-card {
     font-family: inherit;
   }
   }
+}
+
+/* Bottom fixed marquee */
+.section-marquee {
+  position: absolute; /* position relative to .hero so bottom aligns with hero bottom */
+  left: 0; /* flush to the left edge of hero */
+  bottom: 0; /* sit at the very bottom of the hero section */
+  /* set zero offset so the marquee sits exactly at the hero bottom
+     and therefore directly above the About Us section with no gap */
+  --marquee-offset: 0;
+  transform: translateY(var(--marquee-offset));
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-start; /* start from left */
+  align-items: center;
+  padding: 6px 0 0 0;
+  pointer-events: auto;
+  z-index: 3; /* above hero content but below global fixed elements */
+  box-sizing: border-box;
+  background: transparent; /* keep hero background visible */
+}
+.marquee-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-left: 0; /* ensure no accidental left padding pushes content */
+  position: relative;
+  /* give the wrapper the same blue background so it always shows
+     full-width even if items are sparse */
+  background: linear-gradient(90deg, #0a47a1 0%, #234b9a 100%);
+}
+.marquee-inner {
+  display: flex;
+  align-items: center;
+  /* inner is twice the visible width -> two tracks each occupy 50% of inner
+     which equals 100% of the visible wrapper. Animating -50% moves second
+     track fully into view creating a seamless loop. */
+  width: 200%;
+  position: relative;
+  transform: translateX(0);
+  will-change: transform;
+}
+
+/* animation only when 'marquee-running' class is present */
+.marquee-inner.marquee-running {
+  /* animation duration and translate distance are set via CSS variables
+     from JS so we animate by the exact pixel width of one track. */
+  animation: marqueeMove var(--marquee-duration, 20s) linear infinite;
+}
+.marquee-track {
+  display: flex;
+  /* each track takes half of inner (i.e. full visible width) */
+  flex: 0 0 50%;
+  /* make items more widely spaced and the track taller */
+  gap: 300px;
+  align-items: center; /* vertically center items inside track */
+  /* reduced vertical padding to lower overall track height */
+  padding: 0.6rem 2.5rem;
+  /* lower track height to make marquee less tall */
+  min-height: 80px;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #0a47a1 0%, #234b9a 100%);
+  border-radius: 0;
+  box-shadow: 0 10px 28px rgba(10,23,78,0.12);
+  color: #fff;
+  justify-content: flex-start;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #233c74;
+  border-radius: 999px;
+  /* tighter pill buttons to match reduced track height */
+  padding: 0.55rem 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(10,23,78,0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.marquee-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(10,23,78,0.12);
+}
+@keyframes marqueeMove {
+  from { transform: translateX(0); }
+  /* use pixel translate computed in JS to avoid gaps */
+  to { transform: translateX(var(--marquee-translate, -50%)); }
+}
+
+/* Reduce marquee speed on small screens */
+@media (max-width: 700px) {
+  /* faster on small screens as well */
+  .marquee-inner.marquee-running { animation-duration: 18s; }
+  .section-marquee { bottom: 0; width: calc(100% - 32px); }
+  /* match desktop: no offset so marquee aligns directly above About section */
+  .section-marquee { --marquee-offset: 0; }
+  /* slightly larger tap targets and text on mobile */
+  .marquee-item { padding: 0.6rem 1rem; font-size: 1.02rem; }
+  .marquee-track { gap: 140px; padding: 0.55rem 1.2rem; min-height: 64px; }
+  /* remove extra CTA spacing to keep tight layout */
+  .primary-btn { margin-bottom: 0; }
 }

@@ -33,6 +33,57 @@ export function App() {
     };
   }, []);
 
+  // Marquee scroll-parallax: adjust CSS variable based on vertical scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      // small parallax offset (clamped)
+      const offset = Math.min(20, window.scrollY * 0.04);
+      document.documentElement.style.setProperty('--marquee-scroll', `${offset}px`);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // initialize
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Ensure marquee has a visual duplicate for a seamless loop while keeping
+  // only one set in the source markup. We clone the items once at mount.
+  useEffect(() => {
+    const track = document.querySelector('.section-marquee .marquee-track');
+    const inner = document.querySelector('.section-marquee .marquee-inner');
+    if (!track || !inner) return;
+    if (inner.dataset.cloned === 'true') return;
+    // Clone the whole track element and append it as a sibling so
+    // the DOM contains two identical track elements side-by-side.
+    // This is more robust than duplicating innerHTML into the same
+    // track and avoids visual seams when the animation loops.
+    const clone = track.cloneNode(true);
+    // Make the clone non-interactive for accessibility and keyboard users
+    clone.setAttribute('aria-hidden', 'true');
+    clone.style.pointerEvents = 'none';
+    clone.querySelectorAll('a,button').forEach((el) => el.setAttribute('tabindex', '-1'));
+    inner.appendChild(clone);
+    inner.dataset.cloned = 'true';
+    // After cloning, compute pixel translate equal to one track width
+    // (half of inner scrollWidth) and set CSS variables so the CSS
+    // animation moves exactly that many pixels. This avoids gaps when
+    // content doesn't fill the full visible width.
+    const totalWidth = inner.scrollWidth; // width of both tracks
+    const oneTrackWidth = Math.round(totalWidth / 2);
+    inner.style.setProperty('--marquee-translate', `-${oneTrackWidth}px`);
+    // Calculate a duration based on width for consistent speed (px/sec)
+    const pxPerSec = 120; // pixels per second (adjustable)
+    const durationSec = Math.max(8, Math.round(oneTrackWidth / pxPerSec));
+    inner.style.setProperty('--marquee-duration', `${durationSec}s`);
+
+    // Restart the marquee animation so it always begins from the left.
+    inner.classList.remove('marquee-running');
+    inner.style.transform = 'translateX(0)';
+    // force reflow
+    void inner.offsetWidth;
+    inner.classList.add('marquee-running');
+  }, []);
+
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
@@ -71,9 +122,25 @@ export function App() {
               </div>
 
               <button class="primary-btn">Get Started Now</button>
+
+              {/* Marquee placed immediately under the primary CTA */}
+              <div class="section-marquee" role="navigation" aria-label="Quick links marquee">
+                <div class="marquee-wrapper">
+                  <div class="marquee-inner">
+                    <div class="marquee-track">
+                      <Link to="/" class="marquee-item">Home</Link>
+                      <Link to="/about" class="marquee-item">About</Link>
+                      <Link to="/services" class="marquee-item">Services</Link>
+                      <Link to="/contact" class="marquee-item">Contact</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
+
+        
 
         {/* About Us */}
         <section class="about-us">
@@ -242,6 +309,7 @@ export function App() {
               Can't find an answer? <a href="#" style={{color:'#233c74', textDecoration:'underline', fontWeight: 500, fontSize: '1.08rem'}}>Chat with our team</a>
             </div>
           </div>
+            
           <div class="faq-list" style={{maxWidth: '700px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.2em'}}>
             {faqs.map((faq, index) => (
               <div 
@@ -351,6 +419,8 @@ export function App() {
         </section>
 
         <Footer />
+
+        
       </div>
 
     </>
