@@ -569,6 +569,16 @@ body {
 /* Prevent horizontal page scrolling caused by wide marquee tracks */
 html, body {
   overflow-x: hidden;
+  /* Keep vertical scrolling but hide the scrollbar visually */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for WebKit-based browsers (Chrome, Safari, newer Edge) */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 /* Scroll animation utility classes */
@@ -617,7 +627,8 @@ html, body {
   background-size: cover;
   background-position: center;
   color: #fff;
-  min-height: 100vh;
+  /* reduce hero height so SBCPL section is less tall; subtract 5rem as requested */
+  min-height: calc(60vh - 5rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1269,7 +1280,8 @@ a.service-card {
   /* Keep marquee in normal document flow so it scrolls with the page */
   position: relative;
   /* use margin-top instead of fixed positioning so marquee sits lower on the page */
-  margin-top: 5rem;
+  /* increased from 10rem to 15rem as requested */
+  margin-top: 15rem;
   /* span the full viewport width (edge-to-edge) */
   width: 100vw;
   /* center a full-bleed element inside any constrained container */
@@ -1360,9 +1372,8 @@ a.service-card {
 @media (max-width: 700px) {
   /* faster on small screens as well */
   .marquee-inner.marquee-running { animation-duration: 18s; }
-  .section-marquee { top: 0; width: calc(100% - 32px); }
-  /* match desktop: same 5rem offset on mobile */
-  .section-marquee { --marquee-offset: 5rem; }
+  /* on small screens keep the same 15rem top spacing and slightly inset width */
+  .section-marquee { margin-top: 15rem; width: calc(100% - 32px); margin-left: calc(50% - 50vw); }
   /* slightly larger tap targets and text on mobile */
   .marquee-item { padding: 0.6rem 1rem; font-size: 1.02rem; }
   .marquee-track { gap: 140px; padding: 0.55rem 1.2rem; min-height: 64px; }
