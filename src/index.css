@@ -16,3 +16,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Smooth in-page and programmatic scrolling */
+html { scroll-behavior: smooth; }
