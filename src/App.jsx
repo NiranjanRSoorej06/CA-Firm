@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect } from 'preact/hooks';
 import { App as Home } from './Home.jsx';
 import AboutUsPage from '../Ash/LawFirmWebApp/AboutUsPage.jsx';
+import PanPage from './pages/PanPage.jsx';
 import ServicePage from '../Ak/CAfirmServices-main/src/components/ServicePage.jsx';
 import serviceConfigs from '../Ak/CAfirmServices-main/src/data/serviceConfigs.js';
 
@@ -23,6 +24,7 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/pan" element={<PanPage />} />
         
         {/* Service Routes */}
         <Route path="/services/income-tax" element={<ServicePage serviceConfig={serviceConfigs.incomeTax} />} />

@@ -54,6 +54,11 @@ const Navbar = () => {
         <ul class="navbar-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
+          <li>
+            <Link to="/pan" onClick={() => { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {} }}>
+              PAN
+            </Link>
+          </li>
           <li 
             class="navbar-dropdown" 
             ref={dropdownRef}
