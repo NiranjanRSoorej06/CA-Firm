@@ -1266,31 +1266,30 @@ a.service-card {
 
 /* Bottom fixed marquee */
 .section-marquee {
-  position: absolute; /* position relative to .hero so bottom aligns with hero bottom */
-  left: 0; /* flush to the left edge of hero */
-  bottom: 0; /* sit at the very bottom of the hero section */
-  /* set zero offset so the marquee sits exactly at the hero bottom
-     and therefore directly above the About Us section with no gap */
-  --marquee-offset: 0;
-  transform: translateY(var(--marquee-offset));
-  width: 100%;
-  max-width: 100%;
+  /* Keep marquee in normal document flow so it scrolls with the page */
+  position: relative;
+  /* use margin-top instead of fixed positioning so marquee sits lower on the page */
+  margin-top: 5rem;
+  /* span the full viewport width (edge-to-edge) */
+  width: 100vw;
+  /* center a full-bleed element inside any constrained container */
+  margin-left: calc(50% - 50vw);
   display: flex;
   justify-content: flex-start; /* start from left */
   align-items: center;
   padding: 6px 0 0 0;
   pointer-events: auto;
-  z-index: 3; /* above hero content but below global fixed elements */
+  z-index: auto; /* normal stacking in flow */
   box-sizing: border-box;
   background: transparent; /* keep hero background visible */
 }
-.marquee-wrapper {
+  .marquee-wrapper {
   width: 100%;
-  max-width: 100%;
   overflow: hidden;
   box-sizing: border-box;
   padding-left: 0; /* ensure no accidental left padding pushes content */
   position: relative;
+  z-index: auto;
   /* give the wrapper the same blue background so it always shows
      full-width even if items are sparse */
   background: linear-gradient(90deg, #0a47a1 0%, #234b9a 100%);
@@ -1361,9 +1360,9 @@ a.service-card {
 @media (max-width: 700px) {
   /* faster on small screens as well */
   .marquee-inner.marquee-running { animation-duration: 18s; }
-  .section-marquee { bottom: 0; width: calc(100% - 32px); }
-  /* match desktop: no offset so marquee aligns directly above About section */
-  .section-marquee { --marquee-offset: 0; }
+  .section-marquee { top: 0; width: calc(100% - 32px); }
+  /* match desktop: same 5rem offset on mobile */
+  .section-marquee { --marquee-offset: 5rem; }
   /* slightly larger tap targets and text on mobile */
   .marquee-item { padding: 0.6rem 1rem; font-size: 1.02rem; }
   .marquee-track { gap: 140px; padding: 0.55rem 1.2rem; min-height: 64px; }
