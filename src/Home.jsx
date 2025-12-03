@@ -72,7 +72,10 @@ export function App() {
     const oneTrackWidth = Math.round(totalWidth / 2);
     inner.style.setProperty('--marquee-translate', `-${oneTrackWidth}px`);
     // Calculate a duration based on width for consistent speed (px/sec)
-    const pxPerSec = 120; // pixels per second (adjustable)
+    // pixels per second (lower value = slower marquee)
+    // Adjusted to make the marquee a bit faster than the last change.
+    // Previously set to 60; increase to 80 for a slightly quicker scroll.
+    const pxPerSec = 80;
     const durationSec = Math.max(8, Math.round(oneTrackWidth / pxPerSec));
     inner.style.setProperty('--marquee-duration', `${durationSec}s`);
 
@@ -128,9 +131,12 @@ export function App() {
                 <div class="marquee-wrapper">
                   <div class="marquee-inner">
                     <div class="marquee-track">
-                      <Link to="/" class="marquee-item">Home</Link>
+                      <Link to="/" class="marquee-item" onClick={(e) => { if (typeof window !== 'undefined' && window.location.pathname === '/') { e.preventDefault(); window.location.reload(); } }}>
+                        Home
+                      </Link>
                       <Link to="/about" class="marquee-item">About</Link>
-                      <Link to="/services" class="marquee-item">Services</Link>
+                      <Link to="/services/income-tax" class="marquee-item">Services</Link>
+                      <Link to="/pan" class="marquee-item">PAN</Link>
                       <Link to="/contact" class="marquee-item">Contact</Link>
                     </div>
                   </div>

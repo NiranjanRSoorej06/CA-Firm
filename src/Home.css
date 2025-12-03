@@ -569,6 +569,16 @@ body {
 /* Prevent horizontal page scrolling caused by wide marquee tracks */
 html, body {
   overflow-x: hidden;
+  /* Keep vertical scrolling but hide the scrollbar visually */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for WebKit-based browsers (Chrome, Safari, newer Edge) */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 /* Scroll animation utility classes */
@@ -617,7 +627,9 @@ html, body {
   background-size: cover;
   background-position: center;
   color: #fff;
-  min-height: 100vh;
+  /* reduce hero height so SBCPL section is less tall on load; subtract 5rem as requested */
+  /* decreased from 60vh to 50vh so the SBCPL hero loads smaller by default */
+  min-height: calc(50vh - 5rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1266,31 +1278,31 @@ a.service-card {
 
 /* Bottom fixed marquee */
 .section-marquee {
-  position: absolute; /* position relative to .hero so bottom aligns with hero bottom */
-  left: 0; /* flush to the left edge of hero */
-  bottom: 0; /* sit at the very bottom of the hero section */
-  /* set zero offset so the marquee sits exactly at the hero bottom
-     and therefore directly above the About Us section with no gap */
-  --marquee-offset: 0;
-  transform: translateY(var(--marquee-offset));
-  width: 100%;
-  max-width: 100%;
+  /* Keep marquee in normal document flow so it scrolls with the page */
+  position: relative;
+  /* use margin-top instead of fixed positioning so marquee sits lower on the page */
+  /* increased from 10rem to 15rem as requested */
+  margin-top: 15rem;
+  /* span the full viewport width (edge-to-edge) */
+  width: 100vw;
+  /* center a full-bleed element inside any constrained container */
+  margin-left: calc(50% - 50vw);
   display: flex;
   justify-content: flex-start; /* start from left */
   align-items: center;
   padding: 6px 0 0 0;
   pointer-events: auto;
-  z-index: 3; /* above hero content but below global fixed elements */
+  z-index: auto; /* normal stacking in flow */
   box-sizing: border-box;
   background: transparent; /* keep hero background visible */
 }
-.marquee-wrapper {
+  .marquee-wrapper {
   width: 100%;
-  max-width: 100%;
   overflow: hidden;
   box-sizing: border-box;
   padding-left: 0; /* ensure no accidental left padding pushes content */
   position: relative;
+  z-index: auto;
   /* give the wrapper the same blue background so it always shows
      full-width even if items are sparse */
   background: linear-gradient(90deg, #0a47a1 0%, #234b9a 100%);
@@ -1313,12 +1325,23 @@ a.service-card {
      from JS so we animate by the exact pixel width of one track. */
   animation: marqueeMove var(--marquee-duration, 20s) linear infinite;
 }
+
+/* Pause marquee when user hovers or focuses any child inside wrapper
+   - Hover: desktop pointer users
+   - Focus-within: keyboard users who tab into a marquee item
+*/
+.marquee-wrapper:hover .marquee-inner.marquee-running,
+.marquee-wrapper:focus-within .marquee-inner.marquee-running {
+  animation-play-state: paused;
+}
 .marquee-track {
   display: flex;
   /* each track takes half of inner (i.e. full visible width) */
   flex: 0 0 50%;
-  /* make items more widely spaced and the track taller */
-  gap: 300px;
+  /* evenly distribute items across the track to avoid visual clustering */
+  justify-content: space-evenly;
+  /* modest gap used as a fallback between items */
+  gap: 48px;
   align-items: center; /* vertically center items inside track */
   /* reduced vertical padding to lower overall track height */
   padding: 0.6rem 2.5rem;
@@ -1329,7 +1352,7 @@ a.service-card {
   border-radius: 0;
   box-shadow: 0 10px 28px rgba(10,23,78,0.12);
   color: #fff;
-  justify-content: flex-start;
+  /* use space-evenly above so explicit left alignment is not needed */
 }
 .marquee-item {
   display: inline-flex;
@@ -1340,16 +1363,28 @@ a.service-card {
   border-radius: 999px;
   /* tighter pill buttons to match reduced track height */
   padding: 0.55rem 1.2rem;
+  margin: 0 8px;
   font-size: 1.05rem;
   line-height: 1;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 6px 18px rgba(10,23,78,0.08);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  /* pointer cursor + slightly smoother transitions for hover/focus */
+  cursor: pointer;
+  transition: transform 0.22s cubic-bezier(.2,.9,.2,1), box-shadow 0.22s cubic-bezier(.2,.9,.2,1), background-color 0.18s ease;
 }
 .marquee-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(10,23,78,0.12);
+  /* stronger hover effect: lift + subtle scale */
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 18px 36px rgba(10,23,78,0.16);
+}
+
+.marquee-item:focus,
+.marquee-item:focus-visible {
+  outline: none;
+  /* visible focus ring for keyboard users */
+  box-shadow: 0 18px 36px rgba(10,23,78,0.12), 0 0 0 4px rgba(255,195,0,0.18);
+  transform: translateY(-6px) scale(1.02);
 }
 @keyframes marqueeMove {
   from { transform: translateX(0); }
@@ -1359,14 +1394,14 @@ a.service-card {
 
 /* Reduce marquee speed on small screens */
 @media (max-width: 700px) {
-  /* faster on small screens as well */
-  .marquee-inner.marquee-running { animation-duration: 18s; }
-  .section-marquee { bottom: 0; width: calc(100% - 32px); }
-  /* match desktop: no offset so marquee aligns directly above About section */
-  .section-marquee { --marquee-offset: 0; }
+  /* rely on the JS-computed --marquee-duration for consistent speed across viewports */
+  .marquee-inner.marquee-running { animation-duration: var(--marquee-duration, 36s); }
+  /* on small screens keep the same 15rem top spacing and slightly inset width */
+  .section-marquee { margin-top: 15rem; width: calc(100% - 32px); margin-left: calc(50% - 50vw); }
   /* slightly larger tap targets and text on mobile */
   .marquee-item { padding: 0.6rem 1rem; font-size: 1.02rem; }
-  .marquee-track { gap: 140px; padding: 0.55rem 1.2rem; min-height: 64px; }
+  /* tighter, evenly distributed spacing on small screens */
+  .marquee-track { gap: 24px; padding: 0.55rem 1.2rem; min-height: 64px; justify-content: space-evenly; }
   /* remove extra CTA spacing to keep tight layout */
   .primary-btn { margin-bottom: 0; }
 }
